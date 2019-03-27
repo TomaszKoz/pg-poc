@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="670.0" fitWidth="260.0" layoutY="60.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0">
          <image>
-            <Image url="@/Img/sidebar-3.jpg" />
+            <Image url="file:/D:/workbench/pg-poc/src/main/resources/Img/sidebar-3.jpg" />
          </image></ImageView>
       <Pane layoutY="60.0" opacity="0.8" prefHeight="670.0" prefWidth="260.0" style="-fx-background-color: #252625;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0" />
       <Pane opacity="0.75" prefHeight="60.0" prefWidth="260.0" style="-fx-background-color: #242424;" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -24,7 +24,7 @@
             </Label>
             <ImageView fitHeight="47.0" fitWidth="41.0" layoutX="28.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@/Img/reactlogo.png" />
+                  <Image url="file:/D:/workbench/pg-poc/src/main/resources/Img/reactlogo.png" />
                </image></ImageView>
          </children>
       </Pane>
