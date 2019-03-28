@@ -18,6 +18,7 @@ public class PocApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        System.setProperty("prism.lcdtext", "false");
         Parent root = FXMLLoader.load(getClass().getResource("jfx/Home.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
