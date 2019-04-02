@@ -1,0 +1,6 @@
+.border-panel{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-border-color:  #E7E7E7;
+    -fx-border-radius: 10;
+}

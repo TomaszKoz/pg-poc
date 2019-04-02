@@ -1,5 +1,7 @@
 package com.archicode.playground.poc.jfx;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,10 +11,11 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
+import javax.swing.text.html.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -29,6 +32,12 @@ public class HomeController implements Initializable {
     private PieChart pieChart;
     @FXML
     private BarChart<String, Number> barChart;
+    @FXML
+    private Pane settingsPanel;
+    @FXML
+    private FontAwesomeIconView arrow;
+    @FXML
+    private ImageView imageView;
 
     private void onIconClick(ActionEvent event) {
         System.out.println("You clicked Icon!");
@@ -115,6 +124,34 @@ public class HomeController implements Initializable {
 
         barChart.getData().add(series4);
         barChart.getData().add(series5);
+
+    }
+
+    @FXML
+    public void onSettings(MouseEvent event) {
+        //TODO try with fade in/out animation
+        boolean visible = settingsPanel.isVisible();
+        settingsPanel.setVisible(!visible);
+        arrow.setVisible(!visible);
+    }
+
+    @FXML
+    public void onImage1(MouseEvent event) {
+
+    }
+
+    @FXML
+    public void onImage2(MouseEvent event) {
+
+    }
+
+    @FXML
+    public void onImage3(MouseEvent event) {
+
+    }
+
+    @FXML
+    public void onImage4(MouseEvent event) {
 
     }
 
