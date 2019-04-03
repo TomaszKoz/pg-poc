@@ -1,7 +1,10 @@
 package com.archicode.playground.poc.jfx;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXToggleButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,11 +14,13 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
-import javax.swing.text.html.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -38,6 +43,16 @@ public class HomeController implements Initializable {
     private FontAwesomeIconView arrow;
     @FXML
     private ImageView imageView;
+    @FXML
+    private JFXButton dashboardButton;
+    @FXML
+    private ImageView background;
+    @FXML
+    private Pane sidePane;
+    @FXML
+    private Pane topPane;
+    @FXML
+    private JFXToggleButton backgroundButton;
 
     private void onIconClick(ActionEvent event) {
         System.out.println("You clicked Icon!");
@@ -129,30 +144,104 @@ public class HomeController implements Initializable {
 
     @FXML
     public void onSettings(MouseEvent event) {
-        //TODO try with fade in/out animation
-        boolean visible = settingsPanel.isVisible();
-        settingsPanel.setVisible(!visible);
-        arrow.setVisible(!visible);
+        boolean isVisible = settingsPanel.isVisible();
+        FadeTransition transition = new FadeTransition(Duration.seconds(0.1), settingsPanel);
+        if (isVisible) {
+            transition.setFromValue(1.0);
+            transition.setToValue(0.0);
+            transition.setOnFinished(v -> settingsPanel.setVisible(false));
+        } else {
+            transition.setFromValue(0.0);
+            transition.setToValue(1.0);
+            settingsPanel.setVisible(true);
+        }
+        transition.play();
     }
 
     @FXML
     public void onImage1(MouseEvent event) {
-
+        background.setImage(new Image("images/sidebar-3.jpg"));
     }
 
     @FXML
     public void onImage2(MouseEvent event) {
-
+        background.setImage(new Image("images/sidebar-1.jpg"));
     }
 
     @FXML
     public void onImage3(MouseEvent event) {
-
+        background.setImage(new Image("images/sidebar-2.jpg"));
     }
 
     @FXML
     public void onImage4(MouseEvent event) {
+        background.setImage(new Image("images/sidebar-5.jpg"));
+    }
 
+    @FXML
+    public void onColor1(MouseEvent event) {
+        sidePane.setStyle("-fx-background-color: #252625");
+        sidePane.setOpacity(0.8);
+        topPane.setStyle("-fx-background-color: #252625");
+        topPane.setOpacity(0.75);
+    }
+
+    @FXML
+    public void onColor2(MouseEvent event) {
+        sidePane.setStyle("-fx-background-color: #1fc6ea");
+        sidePane.setOpacity(0.8);
+        topPane.setStyle("-fx-background-color: #1fc6ea");
+        topPane.setOpacity(0.75);
+    }
+
+    @FXML
+    public void onColor3(MouseEvent event) {
+        sidePane.setStyle("-fx-background-color: #87cb16");
+        sidePane.setOpacity(0.8);
+        topPane.setStyle("-fx-background-color: #87cb16");
+        topPane.setOpacity(0.75);
+    }
+
+    @FXML
+    public void onColor4(MouseEvent event) {
+        sidePane.setStyle("-fx-background-color: #ffa534");
+        sidePane.setOpacity(0.8);
+        topPane.setStyle("-fx-background-color: #ffa534");
+        topPane.setOpacity(0.75);
+    }
+
+    @FXML
+    public void onColor5(MouseEvent event) {
+        sidePane.setStyle("-fx-background-color: #9368e9");
+        sidePane.setOpacity(0.8);
+        topPane.setStyle("-fx-background-color: #9368e9");
+        topPane.setOpacity(0.75);
+    }
+
+    @FXML
+    public void onBackgroundButton(ActionEvent event) {
+        if (backgroundButton.isSelected()) {
+            background.setVisible(true);
+        } else {
+            background.setVisible(false);
+        }
+    }
+
+    @FXML
+    private void onMenuButtonExit(MouseEvent event) {
+        if (event.getSource() instanceof JFXButton) {
+            JFXButton button = (JFXButton) event.getSource();
+            button.setStyle("-fx-background-color: #3E3E3E;");
+            button.setOpacity(0.7);
+        }
+    }
+
+    @FXML
+    private void onMenuButtonEnter(MouseEvent event) {
+        if (event.getSource() instanceof JFXButton) {
+            JFXButton button = (JFXButton) event.getSource();
+            button.setStyle("-fx-background-color: #6C6C6C;");
+        }
     }
 
 }

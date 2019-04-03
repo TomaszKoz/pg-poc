@@ -23,52 +23,52 @@
     <ImageView fx:id="background" fitHeight="670.0" fitWidth="260.0" layoutY="60.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0">
         <Image url="file:/D:/prj/pg-poc/src/main/resources/images/sidebar-3.jpg" />
     </ImageView>
-    <Pane layoutY="60.0" opacity="0.8" prefHeight="670.0" prefWidth="260.0" style="-fx-background-color: #252625;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0">
+    <Pane fx:id="sidePane" layoutY="60.0" opacity="0.8" prefHeight="670.0" prefWidth="260.0" style="-fx-background-color: #252625;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0">
       <children>
-         <JFXButton layoutX="15.0" layoutY="30.0" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="DASHBOARD" textFill="WHITE">
+         <JFXButton fx:id="dashboardButton" layoutX="15.0" layoutY="30.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="DASHBOARD" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
          <MaterialDesignIconView fill="WHITE" glyphName="APPS" layoutX="41.0" layoutY="63.0" size="25" wrappingWidth="23.999990224838257" />
-         <JFXButton layoutX="15.0" layoutY="90.0" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="USER PROFILE" textFill="WHITE">
+         <JFXButton layoutX="15.0" layoutY="90.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="USER PROFILE" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
          <MaterialDesignIconView fill="WHITE" glyphName="ACCOUNT_CIRCLE" layoutX="41.0" layoutY="123.0" size="25" wrappingWidth="23.999990224838257" />
-         <JFXButton layoutX="15.0" layoutY="150.0" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="TABLE LIST" textFill="WHITE">
+         <JFXButton layoutX="15.0" layoutY="150.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="TABLE LIST" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
          <MaterialDesignIconView fill="WHITE" glyphName="TABLE_LARGE" layoutX="41.0" layoutY="183.0" size="25" wrappingWidth="23.999990224838257" />
-         <JFXButton layoutX="15.0" layoutY="210.0" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="TYPOGRAPGY" textFill="WHITE">
+         <JFXButton layoutX="15.0" layoutY="210.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="TYPOGRAPGY" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
          <MaterialDesignIconView fill="WHITE" glyphName="CELLPHONE_LINK" layoutX="41.0" layoutY="243.0" size="25" wrappingWidth="23.999990224838257" />
-         <JFXButton layoutX="15.0" layoutY="270.0" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="ICONS" textFill="WHITE">
+         <JFXButton layoutX="15.0" layoutY="270.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="ICONS" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
          <MaterialDesignIconView fill="WHITE" glyphName="BRUSH" layoutX="41.0" layoutY="303.0" size="25" wrappingWidth="23.999990224838257" />
-         <JFXButton layoutX="15.0" layoutY="330.0" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="MAPS" textFill="WHITE">
+         <JFXButton layoutX="15.0" layoutY="330.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="MAPS" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
          <MaterialDesignIconView fill="WHITE" glyphName="MAP_MARKER" layoutX="41.0" layoutY="363.0" size="25" wrappingWidth="23.999990224838257" />
-         <JFXButton layoutX="15.0" layoutY="390.0" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="NOTIFICATION" textFill="WHITE">
+         <JFXButton layoutX="15.0" layoutY="390.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="NOTIFICATION" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
          <MaterialDesignIconView fill="WHITE" glyphName="BELL_OUTLINE" layoutX="41.0" layoutY="423.0" size="25" wrappingWidth="23.999990224838257" />
       </children></Pane>
-    <Pane opacity="0.75" prefHeight="60.0" prefWidth="260.0" style="-fx-background-color: #242424;" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <Pane fx:id="topPane" opacity="0.75" prefHeight="60.0" prefWidth="260.0" style="-fx-background-color: #242424;" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
           <Label layoutX="81.0" layoutY="17.0" text="CREATIVE TIM" textFill="WHITE">
               <font>
@@ -269,27 +269,18 @@
                            <FontAwesomeIconView fill="#fb404b" glyphName="REMOVE" layoutX="350.0" layoutY="333.0" size="25" />
                         </children>
                      </Pane>
-                     <Pane layoutX="1029.0" layoutY="281.0" prefHeight="50.0" prefWidth="75.0" style="-fx-background-color: #ADADAD; -fx-background-radius: 10;">
-                        <children>
-                           <ImageView fitHeight="40.0" fitWidth="41.0" layoutX="9.0" layoutY="5.0" onMouseClicked="#onSettings" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="file:/D:/prj/pg-poc/src/main/resources/images/icons8_Settings_48px_1.png" />
-                              </image>
-                           </ImageView>
-                        </children>
-                     </Pane>
                      <Pane fx:id="settingsPanel" layoutX="723.0" layoutY="16.0" prefHeight="510.0" prefWidth="290.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" styleClass="border-panel">
                         <children>
                            <FontAwesomeIconView fx:id="arrow" fill="WHITE" glyphName="CARET_RIGHT" layoutX="287.0" layoutY="312.0" size="60" wrappingWidth="13.714285850524902" />
-                           <Label layoutX="95.0" layoutY="14.0" text="SIDEBAR STYLE" />
-                           <JFXToggleButton layoutX="179.0" layoutY="43.0" selected="true" text="ON" toggleColor="#1fc6ea" toggleLineColor="#1fc6ea" />
+                           <Label layoutX="95.0" layoutY="17.0" text="SIDEBAR STYLE" />
+                           <JFXToggleButton fx:id="backgroundButton" layoutX="179.0" layoutY="43.0" onAction="#onBackgroundButton" selected="true" text="ON" toggleColor="#1fc6ea" toggleLineColor="#1fc6ea" />
                            <Label layoutX="14.0" layoutY="63.0" text="Background image" />
                            <Label layoutX="14.0" layoutY="108.0" text="Filters" />
-                           <FontAwesomeIconView fill="#777777" glyphName="CIRCLE" layoutX="106.0" layoutY="125.0" size="20" />
-                           <FontAwesomeIconView fill="#1fc6ea" glyphName="CIRCLE" layoutX="141.0" layoutY="125.0" size="20" />
-                           <FontAwesomeIconView fill="#87cb16" glyphName="CIRCLE" layoutX="175.0" layoutY="125.0" size="20" />
-                           <FontAwesomeIconView fill="#ffa534" glyphName="CIRCLE" layoutX="208.0" layoutY="125.0" size="20" />
-                           <FontAwesomeIconView fill="#9368e9" glyphName="CIRCLE" layoutX="241.0" layoutY="125.0" size="20" />
+                           <FontAwesomeIconView fill="#777777" glyphName="CIRCLE" layoutX="106.0" layoutY="125.0" onMouseClicked="#onColor1" size="20" />
+                           <FontAwesomeIconView fill="#1fc6ea" glyphName="CIRCLE" layoutX="141.0" layoutY="125.0" onMouseClicked="#onColor2" size="20" />
+                           <FontAwesomeIconView fill="#87cb16" glyphName="CIRCLE" layoutX="175.0" layoutY="125.0" onMouseClicked="#onColor3" size="20" />
+                           <FontAwesomeIconView fill="#ffa534" glyphName="CIRCLE" layoutX="208.0" layoutY="125.0" onMouseClicked="#onColor4" size="20" />
+                           <FontAwesomeIconView fill="#9368e9" glyphName="CIRCLE" layoutX="241.0" layoutY="125.0" onMouseClicked="#onColor5" size="20" />
                            <Separator layoutX="15.0" layoutY="148.0" prefHeight="0.0" prefWidth="260.0" />
                            <Label layoutX="92.0" layoutY="160.0" text="SIDEBAR IMAGES" />
                            <FontAwesomeIconView fill="#3b5998" glyphName="FACEBOOK_SQUARE" layoutX="109.0" layoutY="475.0" size="30" />
@@ -307,8 +298,17 @@
                            <Pane layoutX="217.0" layoutY="190.0" onMouseClicked="#onImage4" prefHeight="110.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-background-image: url(images/rsz_sidebar-5.jpg);" />
                         </children>
                         <effect>
-                           <DropShadow />
+                           <DropShadow blurType="ONE_PASS_BOX" height="248.78" offsetX="10.0" offsetY="10.0" radius="109.705" width="192.04" />
                         </effect>
+                     </Pane>
+                     <Pane layoutX="1029.0" layoutY="281.0" opacity="0.7" prefHeight="50.0" prefWidth="75.0" style="-fx-background-color: #ADADAD; -fx-background-radius: 10;">
+                        <children>
+                           <ImageView fitHeight="40.0" fitWidth="41.0" layoutX="9.0" layoutY="5.0" onMouseClicked="#onSettings" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="file:/D:/prj/pg-poc/src/main/resources/images/icons8_Settings_48px_1.png" />
+                              </image>
+                           </ImageView>
+                        </children>
                      </Pane>
                   </children>
                </AnchorPane>
