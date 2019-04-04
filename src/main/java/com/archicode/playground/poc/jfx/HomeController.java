@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
@@ -53,6 +54,10 @@ public class HomeController implements Initializable {
     private Pane topPane;
     @FXML
     private JFXToggleButton backgroundButton;
+    @FXML
+    private FontAwesomeIconView dropdownButton;
+    @FXML
+    private Pane dropdownPane;
 
     private void onIconClick(ActionEvent event) {
         System.out.println("You clicked Icon!");
@@ -144,16 +149,25 @@ public class HomeController implements Initializable {
 
     @FXML
     public void onSettings(MouseEvent event) {
-        boolean isVisible = settingsPanel.isVisible();
-        FadeTransition transition = new FadeTransition(Duration.seconds(0.1), settingsPanel);
+        fadeAnimation(settingsPanel);
+    }
+
+    @FXML
+    public void onDropdown(MouseEvent event) {
+        fadeAnimation(dropdownPane);
+    }
+
+    private void fadeAnimation(Node node) {
+        boolean isVisible = node.isVisible();
+        FadeTransition transition = new FadeTransition(Duration.seconds(0.1), node);
         if (isVisible) {
             transition.setFromValue(1.0);
             transition.setToValue(0.0);
-            transition.setOnFinished(v -> settingsPanel.setVisible(false));
+            transition.setOnFinished(v -> node.setVisible(false));
         } else {
             transition.setFromValue(0.0);
             transition.setToValue(1.0);
-            settingsPanel.setVisible(true);
+            node.setVisible(true);
         }
         transition.play();
     }
