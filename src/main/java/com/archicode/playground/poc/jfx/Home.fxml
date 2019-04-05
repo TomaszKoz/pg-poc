@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
@@ -113,7 +114,7 @@
                      </Label>
                      <FontAwesomeIconView fx:id="dropdownButton" fill="#939999" glyphName="CARET_DOWN" layoutX="966.0" layoutY="40.0" onMouseClicked="#onDropdown" size="18" />
                   </children></Pane>
-               <AnchorPane fx:id="dashboard" layoutY="60.0" prefHeight="1350.0" prefWidth="1086.0" style="-fx-background-color: #F7F7F8;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+               <AnchorPane fx:id="dashboard" layoutY="60.0" prefHeight="1350.0" prefWidth="1086.0" style="-fx-background-color: #F7F7F8;" visible="false" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                   <children>
                      <Pane layoutX="36.0" layoutY="33.0" prefHeight="145.0" prefWidth="230.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #e7e7e7; -fx-border-radius: 10;" AnchorPane.leftAnchor="36.0">
                         <children>
@@ -312,7 +313,7 @@
                            </ImageView>
                         </children>
                      </Pane>
-                     <Pane fx:id="dropdownPane" layoutX="850.0" layoutY="-10.0" prefHeight="232.0" prefWidth="163.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+                     <Pane fx:id="dropdownPane" layoutX="850.0" layoutY="-10.0" prefHeight="232.0" prefWidth="163.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" visible="false">
                         <effect>
                            <DropShadow height="10.0" radius="5.0" width="12.0" />
                         </effect>
@@ -428,6 +429,20 @@
                         </font>
                      </Label>
                   </children></Pane>
+               <AnchorPane layoutY="60.0" prefHeight="1350.0" prefWidth="1086.0">
+                  <children>
+                     <Pane layoutX="26.0" layoutY="25.0" prefHeight="622.0" prefWidth="664.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #e7e7e7; -fx-border-radius: 10;">
+                        <children>
+                           <Label layoutX="23.0" layoutY="24.0" text="Edit profile">
+                              <font>
+                                 <Font name="System Bold" size="18.0" />
+                              </font>
+                           </Label>
+                           <JFXTextField focusColor="WHITE" layoutX="23.0" layoutY="93.0" prefHeight="25.0" prefWidth="222.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 5; -fx-background-color: #CCC; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Creative Code Inc." unFocusColor="WHITE" />
+                        </children>
+                     </Pane>
+                  </children>
+               </AnchorPane>
             </children></AnchorPane>
       </content>
     </ScrollPane>
