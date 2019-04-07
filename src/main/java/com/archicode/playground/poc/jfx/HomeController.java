@@ -15,11 +15,16 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -32,6 +37,13 @@ public class HomeController implements Initializable {
 
     @FXML
     private AnchorPane dashboard;
+    @FXML
+    private AnchorPane userProfile;
+    @FXML
+    private AnchorPane icons;
+    @FXML
+    private AnchorPane maps;
+
     @FXML
     private LineChart<String, Number> lineChart;
     @FXML
@@ -58,6 +70,12 @@ public class HomeController implements Initializable {
     private FontAwesomeIconView dropdownButton;
     @FXML
     private Pane dropdownPane;
+    @FXML
+    private Circle imageCircle;
+    @FXML
+    private WebView webView = new WebView();
+    @FXML
+    private Label titleLabel;
 
     private void onIconClick(ActionEvent event) {
         System.out.println("You clicked Icon!");
@@ -145,6 +163,8 @@ public class HomeController implements Initializable {
         barChart.getData().add(series4);
         barChart.getData().add(series5);
 
+        Image image = new Image("/images/faces/face-3.jpg");
+        imageCircle.setFill(new ImagePattern(image));
     }
 
     @FXML
@@ -246,7 +266,7 @@ public class HomeController implements Initializable {
         if (event.getSource() instanceof JFXButton) {
             JFXButton button = (JFXButton) event.getSource();
             button.setStyle("-fx-background-color: #3E3E3E;");
-            button.setOpacity(0.7);
+            //button.setOpacity(0.7);
         }
     }
 
@@ -256,6 +276,46 @@ public class HomeController implements Initializable {
             JFXButton button = (JFXButton) event.getSource();
             button.setStyle("-fx-background-color: #6C6C6C;");
         }
+    }
+
+    @FXML
+    private void onDashboard(MouseEvent event) {
+        dashboard.setVisible(true);
+        userProfile.setVisible(false);
+        icons.setVisible(false);
+        maps.setVisible(false);
+        titleLabel.setText("Dashboard");
+    }
+
+    @FXML
+    private void onUserProfile(MouseEvent event) {
+        dashboard.setVisible(false);
+        userProfile.setVisible(true);
+        icons.setVisible(false);
+        maps.setVisible(false);
+        titleLabel.setText("User Profile");
+    }
+
+    @FXML
+    private void onIcons(MouseEvent event) {
+        dashboard.setVisible(false);
+        userProfile.setVisible(false);
+        icons.setVisible(true);
+        maps.setVisible(false);
+        titleLabel.setText("Icons");
+    }
+
+    @FXML
+    private void onMaps(MouseEvent event) {
+        dashboard.setVisible(false);
+        userProfile.setVisible(false);
+        icons.setVisible(false);
+        maps.setVisible(true);
+        titleLabel.setText("Map");
+
+        WebEngine engine = webView.getEngine();
+        URL url = getClass().getResource("/static/map.html");
+        engine.load(url.toExternalForm());
     }
 
 }

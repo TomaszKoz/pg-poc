@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
@@ -20,7 +22,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="1366.0" stylesheets="file:/D:/prj/pg-poc/src/main/resources/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archicode.playground.poc.jfx.HomeController">
     <ImageView fx:id="background" fitHeight="670.0" fitWidth="260.0" layoutY="60.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0">
@@ -28,48 +33,48 @@
     </ImageView>
     <Pane fx:id="sidePane" layoutY="60.0" opacity="0.8" prefHeight="670.0" prefWidth="260.0" style="-fx-background-color: #252625;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0">
       <children>
-         <JFXButton fx:id="dashboardButton" layoutX="15.0" layoutY="30.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="DASHBOARD" textFill="WHITE">
+         <JFXButton fx:id="dashboardButton" layoutX="15.0" layoutY="30.0" onMouseClicked="#onDashboard" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" opacity="0.7" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="DASHBOARD" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
-         <MaterialDesignIconView fill="WHITE" glyphName="APPS" layoutX="41.0" layoutY="63.0" size="25" wrappingWidth="23.999990224838257" />
-         <JFXButton layoutX="15.0" layoutY="90.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="USER PROFILE" textFill="WHITE">
+         <MaterialDesignIconView fill="WHITE" glyphName="APPS" layoutX="41.0" layoutY="63.0" opacity="0.7" size="25" wrappingWidth="23.999990224838257" />
+         <JFXButton layoutX="15.0" layoutY="90.0" onMouseClicked="#onUserProfile" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" opacity="0.7" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="USER PROFILE" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
-         <MaterialDesignIconView fill="WHITE" glyphName="ACCOUNT_CIRCLE" layoutX="41.0" layoutY="123.0" size="25" wrappingWidth="23.999990224838257" />
-         <JFXButton layoutX="15.0" layoutY="150.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="TABLE LIST" textFill="WHITE">
+         <MaterialDesignIconView fill="WHITE" glyphName="ACCOUNT_CIRCLE" layoutX="41.0" layoutY="123.0" opacity="0.7" size="25" wrappingWidth="23.999990224838257" />
+         <JFXButton layoutX="15.0" layoutY="150.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" opacity="0.7" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="TABLE LIST" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
-         <MaterialDesignIconView fill="WHITE" glyphName="TABLE_LARGE" layoutX="41.0" layoutY="183.0" size="25" wrappingWidth="23.999990224838257" />
-         <JFXButton layoutX="15.0" layoutY="210.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="TYPOGRAPGY" textFill="WHITE">
+         <MaterialDesignIconView fill="WHITE" glyphName="TABLE_LARGE" layoutX="41.0" layoutY="183.0" opacity="0.7" size="25" wrappingWidth="23.999990224838257" />
+         <JFXButton layoutX="15.0" layoutY="210.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" opacity="0.7" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="TYPOGRAPGY" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
-         <MaterialDesignIconView fill="WHITE" glyphName="CELLPHONE_LINK" layoutX="41.0" layoutY="243.0" size="25" wrappingWidth="23.999990224838257" />
-         <JFXButton layoutX="15.0" layoutY="270.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="ICONS" textFill="WHITE">
+         <MaterialDesignIconView fill="WHITE" glyphName="CELLPHONE_LINK" layoutX="41.0" layoutY="243.0" opacity="0.7" size="25" wrappingWidth="23.999990224838257" />
+         <JFXButton layoutX="15.0" layoutY="270.0" onMouseClicked="#onIcons" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" opacity="0.7" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="ICONS" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
-         <MaterialDesignIconView fill="WHITE" glyphName="BRUSH" layoutX="41.0" layoutY="303.0" size="25" wrappingWidth="23.999990224838257" />
-         <JFXButton layoutX="15.0" layoutY="330.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="MAPS" textFill="WHITE">
+         <MaterialDesignIconView fill="WHITE" glyphName="DIAMOND" layoutX="41.0" layoutY="303.0" opacity="0.7" size="25" wrappingWidth="23.999990224838257" />
+         <JFXButton layoutX="15.0" layoutY="330.0" onMouseClicked="#onMaps" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" opacity="0.7" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="MAPS" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
-         <MaterialDesignIconView fill="WHITE" glyphName="MAP_MARKER" layoutX="41.0" layoutY="363.0" size="25" wrappingWidth="23.999990224838257" />
-         <JFXButton layoutX="15.0" layoutY="390.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="NOTIFICATION" textFill="WHITE">
+         <MaterialDesignIconView fill="WHITE" glyphName="MAP_MARKER" layoutX="41.0" layoutY="363.0" opacity="0.7" size="25" wrappingWidth="23.999990224838257" />
+         <JFXButton layoutX="15.0" layoutY="390.0" onMouseEntered="#onMenuButtonEnter" onMouseExited="#onMenuButtonExit" opacity="0.7" prefHeight="49.0" prefWidth="230.0" style="-fx-background-color: #3E3E3E;" text="NOTIFICATION" textFill="WHITE">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </JFXButton>
-         <MaterialDesignIconView fill="WHITE" glyphName="BELL_OUTLINE" layoutX="41.0" layoutY="423.0" size="25" wrappingWidth="23.999990224838257" />
+         <MaterialDesignIconView fill="WHITE" glyphName="BELL_OUTLINE" layoutX="41.0" layoutY="423.0" opacity="0.7" size="25" wrappingWidth="23.999990224838257" />
       </children></Pane>
     <Pane fx:id="topPane" opacity="0.75" prefHeight="60.0" prefWidth="260.0" style="-fx-background-color: #242424;" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
@@ -89,7 +94,7 @@
             <children>
                <Pane prefHeight="60.0" prefWidth="1090.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="1410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
-                     <Label layoutX="39.0" layoutY="17.0" text="Dashboard" textFill="#939999">
+                     <Label fx:id="titleLabel" layoutX="39.0" layoutY="17.0" text="Dashboard" textFill="#939999">
                         <font>
                            <Font size="18.0" />
                         </font>
@@ -114,7 +119,7 @@
                      </Label>
                      <FontAwesomeIconView fx:id="dropdownButton" fill="#939999" glyphName="CARET_DOWN" layoutX="966.0" layoutY="40.0" onMouseClicked="#onDropdown" size="18" />
                   </children></Pane>
-               <AnchorPane fx:id="dashboard" layoutY="60.0" prefHeight="1350.0" prefWidth="1086.0" style="-fx-background-color: #F7F7F8;" visible="false" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+               <AnchorPane fx:id="dashboard" layoutY="60.0" prefHeight="1350.0" prefWidth="1086.0" style="-fx-background-color: #F7F7F8;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                   <children>
                      <Pane layoutX="36.0" layoutY="33.0" prefHeight="145.0" prefWidth="230.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #e7e7e7; -fx-border-radius: 10;" AnchorPane.leftAnchor="36.0">
                         <children>
@@ -429,18 +434,201 @@
                         </font>
                      </Label>
                   </children></Pane>
-               <AnchorPane layoutY="60.0" prefHeight="1350.0" prefWidth="1086.0">
+               <AnchorPane fx:id="userProfile" layoutY="60.0" prefHeight="1350.0" prefWidth="1086.0" style="-fx-background-color: #F7F7F8;" visible="false" AnchorPane.rightAnchor="4.0">
                   <children>
-                     <Pane layoutX="26.0" layoutY="25.0" prefHeight="622.0" prefWidth="664.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #e7e7e7; -fx-border-radius: 10;">
+                     <Pane layoutX="26.0" layoutY="25.0" prefHeight="772.0" prefWidth="692.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #e7e7e7; -fx-border-radius: 10;">
                         <children>
-                           <Label layoutX="23.0" layoutY="24.0" text="Edit profile">
+                           <Label layoutX="23.0" layoutY="22.0" text="Edit Profile">
+                              <font>
+                                 <Font size="24.0" />
+                              </font>
+                           </Label>
+                           <JFXTextField disable="true" focusColor="#41b9e1" layoutX="23.0" layoutY="98.0" prefHeight="42.0" prefWidth="211.0" style="-fx-background-color: #F0F0F0; -fx-background-radius: 5; -fx-border-color: #AAAAAA; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Creative Code Inc." unFocusColor="WHITE" />
+                           <Label layoutX="23.0" layoutY="70.0" text="COMPANY" textFill="#9a9a9a">
+                              <font>
+                                 <Font size="14.0" />
+                              </font>
+                           </Label>
+                           <JFXTextField focusColor="#41b9e1" layoutX="257.0" layoutY="98.0" prefHeight="42.0" prefWidth="193.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="michael23" unFocusColor="WHITE" />
+                           <Label layoutX="257.0" layoutY="70.0" text="USERNAME" textFill="#9a9a9a">
+                              <font>
+                                 <Font size="14.0" />
+                              </font>
+                           </Label>
+                           <JFXTextField accessibleText="aaaaa" focusColor="#41b9e1" layoutX="473.0" layoutY="98.0" prefHeight="42.0" prefWidth="197.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" unFocusColor="WHITE" />
+                           <Label layoutX="475.0" layoutY="70.0" text="EMAIL ADDRESS" textFill="#9a9a9a">
+                              <font>
+                                 <Font size="14.0" />
+                              </font>
+                           </Label>
+                           <JFXTextField focusColor="#41b9e1" layoutX="23.0" layoutY="193.0" prefHeight="42.0" prefWidth="293.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Mike" unFocusColor="WHITE" />
+                           <Label layoutX="23.0" layoutY="165.0" text="FIRST NAME" textFill="#9a9a9a">
+                              <font>
+                                 <Font size="14.0" />
+                              </font>
+                           </Label>
+                           <JFXTextField accessibleText="aaaaa" focusColor="#41b9e1" layoutX="352.0" layoutY="193.0" prefHeight="42.0" prefWidth="318.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Andrew" unFocusColor="WHITE" />
+                           <Label layoutX="354.0" layoutY="165.0" text="LAST NAME" textFill="#9a9a9a">
+                              <font>
+                                 <Font size="14.0" />
+                              </font>
+                           </Label>
+                           <JFXTextField focusColor="#41b9e1" layoutX="23.0" layoutY="290.0" prefHeight="42.0" prefWidth="645.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" unFocusColor="WHITE" />
+                           <Label layoutX="23.0" layoutY="262.0" text="ADRESS" textFill="#9a9a9a">
+                              <font>
+                                 <Font size="14.0" />
+                              </font>
+                           </Label>
+                           <JFXTextField focusColor="#41b9e1" layoutX="23.0" layoutY="389.0" prefHeight="42.0" prefWidth="211.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Toronto" unFocusColor="WHITE" />
+                           <Label layoutX="23.0" layoutY="361.0" text="CITY" textFill="#9a9a9a">
+                              <font>
+                                 <Font size="14.0" />
+                              </font>
+                           </Label>
+                           <JFXTextField focusColor="#41b9e1" layoutX="257.0" layoutY="389.0" prefHeight="42.0" prefWidth="193.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Canada" unFocusColor="WHITE" />
+                           <Label layoutX="257.0" layoutY="361.0" text="COUNTRY" textFill="#9a9a9a">
+                              <font>
+                                 <Font size="14.0" />
+                              </font>
+                           </Label>
+                           <JFXTextField accessibleText="aaaaa" focusColor="#41b9e1" layoutX="473.0" layoutY="389.0" prefHeight="42.0" prefWidth="193.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" unFocusColor="WHITE" />
+                           <Label layoutX="475.0" layoutY="361.0" text="POSTAL CODE" textFill="#9a9a9a">
+                              <font>
+                                 <Font size="14.0" />
+                              </font>
+                           </Label>
+                           <JFXTextArea depthTest="DISABLE" focusColor="#41b9e1" layoutX="23.0" layoutY="490.0" prefHeight="150.0" prefWidth="643.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5;" text="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo." unFocusColor="WHITE">
+                              <opaqueInsets>
+                                 <Insets />
+                              </opaqueInsets>
+                              <padding>
+                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                              </padding>
+                           </JFXTextArea>
+                           <Label layoutX="23.0" layoutY="459.0" text="ABOUT ME" textFill="#9a9a9a">
+                              <font>
+                                 <Font size="14.0" />
+                              </font>
+                           </Label>
+                           <JFXButton buttonType="RAISED" layoutX="514.0" layoutY="680.0" prefHeight="49.0" prefWidth="152.0" style="-fx-background-color: #42D0ED; -fx-background-radius: 5;" text="Update Profie" textFill="WHITE">
+                              <font>
+                                 <Font size="18.0" />
+                              </font>
+                           </JFXButton>
+                        </children>
+                     </Pane>
+                     <Pane layoutX="737.0" layoutY="25.0" prefHeight="402.0" prefWidth="326.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #e7e7e7; -fx-border-radius: 5;">
+                        <children>
+                           <Pane prefHeight="139.0" prefWidth="326.0">
+                              <children>
+                                 <ImageView fitHeight="260.0" fitWidth="330.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="file:/D:/prj/pg-poc/src/main/resources/images/mohamed.jpg" />
+                                    </image>
+                                    <viewport>
+                                       <Rectangle2D height="139.0" width="326.0" />
+                                    </viewport>
+                                 </ImageView>
+                                 <Circle fill="WHITE" layoutX="163.0" layoutY="142.0" radius="67.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                                    <effect>
+                                       <DropShadow />
+                                    </effect>
+                                 </Circle>
+                                 <Circle fx:id="imageCircle" fill="#1f93ff" layoutX="163.0" layoutY="142.0" radius="61.0" stroke="#6f6f6f" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              </children>
+                           </Pane>
+                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="72.0" layoutY="253.0" text="michael23&#10;&quot;Lamborghini Mercy&#10;Your chick she so thirsty&#10;I'm in that two seat Lambo&quot;" textAlignment="CENTER" />
+                           <Separator layoutX="14.0" layoutY="356.0" prefHeight="0.0" prefWidth="295.0" />
+                           <FontAwesomeIconView fill="#a0a0a0" glyphName="FACEBOOK_SQUARE" layoutX="105.0" layoutY="384.0" size="18" />
+                           <FontAwesomeIconView fill="#a0a0a0" glyphName="GOOGLE_PLUS_SQUARE" layoutX="153.0" layoutY="384.0" size="18" />
+                           <FontAwesomeIconView fill="#a0a0a0" glyphName="TWITTER" layoutX="202.0" layoutY="384.0" size="18" />
+                           <Label layoutX="106.0" layoutY="221.0" text="Mike Andrew">
                               <font>
                                  <Font name="System Bold" size="18.0" />
                               </font>
                            </Label>
-                           <JFXTextField focusColor="WHITE" layoutX="23.0" layoutY="93.0" prefHeight="25.0" prefWidth="222.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 5; -fx-background-color: #CCC; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Creative Code Inc." unFocusColor="WHITE" />
                         </children>
                      </Pane>
+                  </children>
+               </AnchorPane>
+               <AnchorPane fx:id="icons" layoutY="60.0" prefHeight="1350.0" prefWidth="1086.0" style="-fx-background-color: #F7F7F8;" visible="false" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="60.0">
+                  <children>
+                     <Pane layoutX="29.0" layoutY="28.0" prefHeight="1297.0" prefWidth="1033.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #e7e7e7; -fx-border-radius: 10;">
+                        <children>
+                           <Label layoutX="22.0" layoutY="20.0" text="Font Awesome Icons">
+                              <font>
+                                 <Font size="24.0" />
+                              </font>
+                           </Label>
+                           <Label layoutX="22.0" layoutY="55.0" text="Handcrafted by our friends from" textFill="#939999" />
+                           <Label layoutX="239.0" layoutY="55.0" text="Font Awesome" textFill="#1dc7ea" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="38.0" layoutY="109.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="TROPHY" layoutX="117.0" layoutY="214.0" size="50" />
+                           <Label layoutX="112.0" layoutY="257.0" text="TROPHY" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="290.0" layoutY="109.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="BATTERY_2" layoutX="358.0" layoutY="215.0" size="50" />
+                           <Label layoutX="353.0" layoutY="257.0" text="BATTERY_2" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="543.0" layoutY="109.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="USER_PLUS" layoutX="614.0" layoutY="214.0" size="50" />
+                           <Label layoutX="605.0" layoutY="257.0" text="USER_PLUS" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="795.0" layoutY="109.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="WHATSAPP" layoutX="874.0" layoutY="214.0" size="50" />
+                           <Label layoutX="856.0" layoutY="257.0" text="WHATSAPP" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="38.0" layoutY="345.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="HEARTBEAT" layoutX="115.0" layoutY="450.0" size="50" />
+                           <Label layoutX="101.0" layoutY="493.0" text="HEARTBEAT" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="290.0" layoutY="345.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="MICROPHONE" layoutX="373.0" layoutY="450.0" size="50" />
+                           <Label layoutX="342.0" layoutY="493.0" text="MICROPHONE" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="543.0" layoutY="345.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="MONEY" layoutX="616.0" layoutY="450.0" size="50" />
+                           <Label layoutX="617.0" layoutY="493.0" text="MONEY" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="795.0" layoutY="345.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="TRASH" layoutX="875.0" layoutY="449.0" size="50" />
+                           <Label layoutX="872.0" layoutY="493.0" text="TRASH" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="38.0" layoutY="582.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="DESKTOP" layoutX="113.0" layoutY="687.0" size="50" />
+                           <Label layoutX="109.0" layoutY="730.0" text="DESKTOP" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="290.0" layoutY="582.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="FIGHTER_JET" layoutX="363.0" layoutY="687.0" size="50" />
+                           <Label layoutX="347.0" layoutY="730.0" text="FIGHTER_JET" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="543.0" layoutY="582.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="FLOPPY_ALT" layoutX="622.0" layoutY="687.0" size="50" />
+                           <Label layoutX="600.0" layoutY="730.0" text="FLOPPY_ALT" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="795.0" layoutY="582.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="GITHUB" layoutX="873.0" layoutY="686.0" size="50" />
+                           <Label layoutX="868.0" layoutY="730.0" text="GITHUB" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="38.0" layoutY="822.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="ANDROID" layoutX="120.0" layoutY="927.0" size="50" />
+                           <Label layoutX="107.0" layoutY="970.0" text="ANDROID" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="290.0" layoutY="822.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="APPLE" layoutX="369.0" layoutY="927.0" size="50" />
+                           <Label layoutX="368.0" layoutY="970.0" text="APPLE" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="543.0" layoutY="822.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="DIAMOND" layoutX="614.0" layoutY="927.0" size="50" />
+                           <Label layoutX="605.0" layoutY="970.0" text="DIAMOND" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="795.0" layoutY="822.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="COMMENTING" layoutX="870.0" layoutY="926.0" size="50" />
+                           <Label layoutX="844.0" layoutY="970.0" text="COMMENTING" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="38.0" layoutY="1063.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="USB" layoutX="107.0" layoutY="1166.0" size="50" />
+                           <Label layoutX="126.0" layoutY="1211.0" text="USB" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="290.0" layoutY="1063.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="WARNING" layoutX="364.0" layoutY="1167.0" size="50" />
+                           <Label layoutX="354.0" layoutY="1211.0" text="WARNING" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="543.0" layoutY="1063.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="TH_LIST" layoutX="618.0" layoutY="1167.0" size="50" />
+                           <Label layoutX="617.0" layoutY="1211.0" text="TH_LIST" textFill="#939999" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="795.0" layoutY="1063.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
+                           <FontAwesomeIconView fill="#575757" glyphName="COFFEE" layoutX="867.0" layoutY="1167.0" size="50" />
+                           <Label layoutX="868.0" layoutY="1211.0" text="COFFEE" textFill="#939999" />
+                        </children>
+                     </Pane>
+                  </children>
+               </AnchorPane>
+               <AnchorPane fx:id="maps" layoutY="60.0" prefHeight="1350.0" prefWidth="1086.0" style="-fx-background-color: #F7F7F8;" visible="false">
+                  <children>
+                     <WebView fx:id="webView" prefHeight="1350.0" prefWidth="1086.0" />
                   </children>
                </AnchorPane>
             </children></AnchorPane>
