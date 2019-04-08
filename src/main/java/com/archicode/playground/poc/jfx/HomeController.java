@@ -9,8 +9,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
@@ -27,6 +29,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -36,6 +39,9 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
 
     @FXML
+    private AnchorPane mainPane;
+
+    @FXML
     private AnchorPane dashboard;
     @FXML
     private AnchorPane userProfile;
@@ -43,6 +49,8 @@ public class HomeController implements Initializable {
     private AnchorPane icons;
     @FXML
     private AnchorPane maps;
+    @FXML
+    private AnchorPane notification;
 
     @FXML
     private LineChart<String, Number> lineChart;
@@ -58,6 +66,15 @@ public class HomeController implements Initializable {
     private ImageView imageView;
     @FXML
     private JFXButton dashboardButton;
+    @FXML
+    private JFXButton userProfileButton;
+    @FXML
+    private JFXButton iconsButton;
+    @FXML
+    private JFXButton mapButton;
+    @FXML
+    private JFXButton notificationButton;
+    private JFXButton activeButton;
     @FXML
     private ImageView background;
     @FXML
@@ -265,8 +282,10 @@ public class HomeController implements Initializable {
     private void onMenuButtonExit(MouseEvent event) {
         if (event.getSource() instanceof JFXButton) {
             JFXButton button = (JFXButton) event.getSource();
-            button.setStyle("-fx-background-color: #3E3E3E;");
-            //button.setOpacity(0.7);
+            if (activeButton != button) {
+                button.setStyle("-fx-background-color: #3E3E3E;");
+                //button.setOpacity(0.7);
+            }
         }
     }
 
@@ -280,42 +299,98 @@ public class HomeController implements Initializable {
 
     @FXML
     private void onDashboard(MouseEvent event) {
-        dashboard.setVisible(true);
-        userProfile.setVisible(false);
-        icons.setVisible(false);
-        maps.setVisible(false);
+        setMenuStyle(dashboardButton, dashboard, true);
+        setMenuStyle(userProfileButton, userProfile, false);
+        setMenuStyle(iconsButton, icons, false);
+        setMenuStyle(mapButton, maps, false);
+        setMenuStyle(notificationButton, notification, false);
         titleLabel.setText("Dashboard");
     }
 
     @FXML
     private void onUserProfile(MouseEvent event) {
-        dashboard.setVisible(false);
-        userProfile.setVisible(true);
-        icons.setVisible(false);
-        maps.setVisible(false);
+        setMenuStyle(dashboardButton, dashboard, false);
+        setMenuStyle(userProfileButton, userProfile, true);
+        setMenuStyle(iconsButton, icons, false);
+        setMenuStyle(mapButton, maps, false);
+        setMenuStyle(notificationButton, notification, false);
         titleLabel.setText("User Profile");
     }
 
     @FXML
     private void onIcons(MouseEvent event) {
-        dashboard.setVisible(false);
-        userProfile.setVisible(false);
-        icons.setVisible(true);
-        maps.setVisible(false);
+        setMenuStyle(dashboardButton, dashboard, false);
+        setMenuStyle(userProfileButton, userProfile, false);
+        setMenuStyle(iconsButton, icons, true);
+        setMenuStyle(mapButton, maps, false);
+        setMenuStyle(notificationButton, notification, false);
         titleLabel.setText("Icons");
     }
 
     @FXML
     private void onMaps(MouseEvent event) {
-        dashboard.setVisible(false);
-        userProfile.setVisible(false);
-        icons.setVisible(false);
-        maps.setVisible(true);
+        setMenuStyle(dashboardButton, dashboard, false);
+        setMenuStyle(userProfileButton, userProfile, false);
+        setMenuStyle(iconsButton, icons, false);
+        setMenuStyle(mapButton, maps, true);
+        setMenuStyle(notificationButton, notification, false);
         titleLabel.setText("Map");
 
         WebEngine engine = webView.getEngine();
         URL url = getClass().getResource("/static/map.html");
         engine.load(url.toExternalForm());
+    }
+
+    @FXML
+    private void onNotification(MouseEvent event) {
+        setMenuStyle(dashboardButton, dashboard, false);
+        setMenuStyle(userProfileButton, userProfile, false);
+        setMenuStyle(iconsButton, icons, false);
+        setMenuStyle(mapButton, maps, false);
+        setMenuStyle(notificationButton, notification, true);
+        titleLabel.setText("Notification");
+    }
+
+    private void setMenuStyle(JFXButton button, AnchorPane pane, boolean enabled) {
+        pane.setVisible(enabled);
+        if (enabled) {
+            button.setStyle("-fx-background-color: #7C7C7C;");
+            activeButton = button;
+        } else {
+            button.setStyle("-fx-background-color: #3E3E3E;");
+        }
+    }
+
+    @FXML
+    public void onInfoNotification(MouseEvent event) {
+        showNotification();
+    }
+
+    @FXML
+    public void onSuccessNotification(MouseEvent event) {
+
+    }
+
+    @FXML
+    public void onWarningNotification(MouseEvent event) {
+
+    }
+
+    @FXML
+    public void onDangerNotification(MouseEvent event) {
+
+    }
+
+    private void showNotification() {
+        try {
+            Parent notificationPane = FXMLLoader.load(getClass().getResource("Notification.fxml"));
+            notificationPane.setLayoutX(556);
+            notificationPane.setLayoutY(70);
+            notificationPane.toFront();
+            mainPane.getChildren().add(notificationPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
