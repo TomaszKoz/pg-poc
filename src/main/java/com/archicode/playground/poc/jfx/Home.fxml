@@ -27,7 +27,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="1366.0" stylesheets="file:/D:/prj/pg-poc/src/main/resources/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archicode.playground.poc.jfx.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="1366.0" stylesheets="file:/D:/prj/pg-poc/src/main/resources/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archicode.playground.poc.jfx.HomeController">
     <ImageView fx:id="background" fitHeight="670.0" fitWidth="260.0" layoutY="60.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0">
         <Image url="file:/D:/prj/pg-poc/src/main/resources/images/sidebar-3.jpg" />
     </ImageView>
@@ -90,7 +90,7 @@
     </Pane>
     <ScrollPane focusTraversable="false" hbarPolicy="NEVER" layoutX="260.0" prefHeight="900.0" prefWidth="1090.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="1470.0" prefWidth="1090.0">
+          <AnchorPane fx:id="workingPane" minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="1470.0" prefWidth="1090.0">
             <children>
                <Pane prefHeight="60.0" prefWidth="1090.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="1410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
@@ -561,7 +561,7 @@
                               </font>
                            </Label>
                            <Label layoutX="22.0" layoutY="55.0" text="Handcrafted by our friends from" textFill="#939999" />
-                           <Label layoutX="198.0" layoutY="55.0" text="Font Awesome" textFill="#1dc7ea" />
+                           <Label layoutX="241.0" layoutY="55.0" text="Font Awesome" textFill="#1dc7ea" />
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="38.0" layoutY="109.0" stroke="#c9c9c9" strokeType="INSIDE" width="200.0" />
                            <FontAwesomeIconView fill="#575757" glyphName="TROPHY" layoutX="117.0" layoutY="214.0" size="50" />
                            <Label layoutX="112.0" layoutY="257.0" text="TROPHY" textFill="#939999" />
@@ -642,74 +642,86 @@
                            </Label>
                            <Label layoutX="23.0" layoutY="88.0" text="Notification states" textFill="#686868">
                               <font>
-                                 <Font size="14.0" />
+                                 <Font size="16.0" />
                               </font>
                            </Label>
-                           <Pane layoutX="23.0" layoutY="121.0" prefHeight="41.0" prefWidth="491.0" style="-fx-background-color: #63D8F1; -fx-background-radius: 5;">
+                           <Pane layoutX="23.0" layoutY="121.0" prefHeight="41.0" prefWidth="600.0" style="-fx-background-color: #63D8F1; -fx-background-radius: 5;">
                               <children>
-                                 <Label layoutX="18.0" layoutY="10.0" text="Info" textFill="WHITE">
+                                 <Label layoutX="14.0" layoutY="7.0" text="Info" textFill="WHITE">
                                     <font>
-                                       <Font name="System Bold" size="14.0" />
+                                       <Font name="System Bold" size="18.0" />
                                     </font>
                                  </Label>
-                                 <Label layoutX="52.0" layoutY="10.0" text="- This is a regular notification made with style=&quot;INFO&quot;" textFill="WHITE">
+                                 <Label layoutX="57.0" layoutY="7.0" text="- This is a regular notification made with style=&quot;INFO&quot;" textFill="WHITE">
                                     <font>
-                                       <Font size="14.0" />
+                                       <Font size="18.0" />
                                     </font>
                                  </Label>
                               </children>
                            </Pane>
-                           <Pane layoutX="23.0" layoutY="173.0" prefHeight="41.0" prefWidth="491.0" style="-fx-background-color: #A1E82C; -fx-background-radius: 5;">
+                           <Pane layoutX="23.0" layoutY="178.0" prefHeight="41.0" prefWidth="600.0" style="-fx-background-color: #A1E82C; -fx-background-radius: 5;">
                               <children>
-                                 <Label layoutX="18.0" layoutY="10.0" text="Success" textFill="WHITE">
+                                 <Label layoutX="14.0" layoutY="7.0" text="Success" textFill="WHITE">
                                     <font>
-                                       <Font name="System Bold" size="14.0" />
+                                       <Font name="System Bold" size="18.0" />
                                     </font>
                                  </Label>
-                                 <Label layoutX="76.0" layoutY="10.0" text="- This is a regular notification made with style=&quot;SUCCESS&quot;" textFill="WHITE">
+                                 <Label layoutX="88.0" layoutY="7.0" text="- This is a regular notification made with style=&quot;SUCCESS&quot;" textFill="WHITE">
                                     <font>
-                                       <Font size="14.0" />
+                                       <Font size="18.0" />
                                     </font>
                                  </Label>
                               </children>
                            </Pane>
-                           <Pane layoutX="23.0" layoutY="226.0" prefHeight="41.0" prefWidth="491.0" style="-fx-background-color: #FFBC67; -fx-background-radius: 5;">
+                           <Pane layoutX="23.0" layoutY="236.0" prefHeight="41.0" prefWidth="600.0" style="-fx-background-color: #FFBC67; -fx-background-radius: 5;">
                               <children>
-                                 <Label layoutX="18.0" layoutY="10.0" text="Warning" textFill="WHITE">
+                                 <Label layoutX="14.0" layoutY="7.0" text="Warning" textFill="WHITE">
                                     <font>
-                                       <Font name="System Bold" size="14.0" />
+                                       <Font name="System Bold" size="18.0" />
                                     </font>
                                  </Label>
-                                 <Label layoutX="81.0" layoutY="10.0" text="- This is a regular notification made with style=&quot;WARNING&quot;" textFill="WHITE">
+                                 <Label layoutX="93.0" layoutY="7.0" text="- This is a regular notification made with style=&quot;WARNING&quot;" textFill="WHITE">
                                     <font>
-                                       <Font size="14.0" />
+                                       <Font size="18.0" />
                                     </font>
                                  </Label>
                               </children>
                            </Pane>
-                           <Pane layoutX="23.0" layoutY="278.0" prefHeight="41.0" prefWidth="491.0" style="-fx-background-color: #FC727A; -fx-background-radius: 5;">
+                           <Pane layoutX="23.0" layoutY="293.0" prefHeight="41.0" prefWidth="600.0" style="-fx-background-color: #FC727A; -fx-background-radius: 5;">
                               <children>
-                                 <Label layoutX="18.0" layoutY="10.0" text="Danger" textFill="WHITE">
+                                 <Label layoutX="14.0" layoutY="7.0" text="Danger" textFill="WHITE">
                                     <font>
-                                       <Font name="System Bold" size="14.0" />
+                                       <Font name="System Bold" size="18.0" />
                                     </font>
                                  </Label>
-                                 <Label layoutX="72.0" layoutY="10.0" text="- This is a regular notification made with style=&quot;DANGER&quot;" textFill="WHITE">
+                                 <Label layoutX="85.0" layoutY="7.0" text="- This is a regular notification made with style=&quot;DANGER&quot;" textFill="WHITE">
                                     <font>
-                                       <Font size="14.0" />
+                                       <Font size="18.0" />
                                     </font>
                                  </Label>
                               </children>
                            </Pane>
-                           <JFXButton buttonType="RAISED" layoutX="594.0" layoutY="121.0" onMouseClicked="#onInfoNotification" prefHeight="41.0" prefWidth="122.0" style="-fx-background-color: #63D8F1;" text="INFO" textFill="WHITE" />
-                           <Label layoutX="594.0" layoutY="88.0" text="Click to view notifications" textFill="#686868">
+                           <JFXButton buttonType="RAISED" layoutX="676.0" layoutY="121.0" onMouseClicked="#onInfoNotification" prefHeight="41.0" prefWidth="122.0" style="-fx-background-color: #63D8F1;" text="INFO" textFill="WHITE">
                               <font>
-                                 <Font size="14.0" />
+                                 <Font size="16.0" />
+                              </font></JFXButton>
+                           <Label layoutX="676.0" layoutY="88.0" text="Click to view notifications" textFill="#686868">
+                              <font>
+                                 <Font size="16.0" />
                               </font>
                            </Label>
-                           <JFXButton buttonType="RAISED" layoutX="594.0" layoutY="173.0" onMouseClicked="#onSuccessNotification" prefHeight="41.0" prefWidth="122.0" style="-fx-background-color: #A1E82C;" text="SUCCESS" textFill="WHITE" />
-                           <JFXButton buttonType="RAISED" layoutX="594.0" layoutY="226.0" onMouseClicked="#onWarningNotification" prefHeight="41.0" prefWidth="122.0" style="-fx-background-color: #FFBC67;" text="WARNING" textFill="WHITE" />
-                           <JFXButton buttonType="RAISED" layoutX="594.0" layoutY="278.0" onMouseClicked="#onDangerNotification" prefHeight="41.0" prefWidth="122.0" style="-fx-background-color: #FC727A;" text="DANGER" textFill="WHITE" />
+                           <JFXButton buttonType="RAISED" layoutX="676.0" layoutY="178.0" onMouseClicked="#onSuccessNotification" prefHeight="41.0" prefWidth="122.0" style="-fx-background-color: #A1E82C;" text="SUCCESS" textFill="WHITE">
+                              <font>
+                                 <Font size="16.0" />
+                              </font></JFXButton>
+                           <JFXButton buttonType="RAISED" layoutX="676.0" layoutY="236.0" onMouseClicked="#onWarningNotification" prefHeight="41.0" prefWidth="122.0" style="-fx-background-color: #FFBC67;" text="WARNING" textFill="WHITE">
+                              <font>
+                                 <Font size="16.0" />
+                              </font></JFXButton>
+                           <JFXButton buttonType="RAISED" layoutX="676.0" layoutY="293.0" onMouseClicked="#onDangerNotification" prefHeight="41.0" prefWidth="122.0" style="-fx-background-color: #FC727A;" text="DANGER" textFill="WHITE">
+                              <font>
+                                 <Font size="16.0" />
+                              </font></JFXButton>
                         </children>
                      </Pane>
                   </children>

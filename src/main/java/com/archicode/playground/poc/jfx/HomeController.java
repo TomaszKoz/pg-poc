@@ -39,7 +39,7 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
 
     @FXML
-    private AnchorPane mainPane;
+    private AnchorPane workingPane;
 
     @FXML
     private AnchorPane dashboard;
@@ -382,7 +382,7 @@ public class HomeController implements Initializable {
     }
 
     private void showNotification() {
-        new NotificationController().show(mainPane);
+        new NotificationController().show(workingPane);
     }
 
 }
