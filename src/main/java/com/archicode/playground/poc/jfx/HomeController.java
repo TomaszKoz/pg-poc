@@ -382,15 +382,7 @@ public class HomeController implements Initializable {
     }
 
     private void showNotification() {
-        try {
-            Parent notificationPane = FXMLLoader.load(getClass().getResource("Notification.fxml"));
-            notificationPane.setLayoutX(556);
-            notificationPane.setLayoutY(70);
-            notificationPane.toFront();
-            mainPane.getChildren().add(notificationPane);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new NotificationController().show(mainPane);
     }
 
 }
