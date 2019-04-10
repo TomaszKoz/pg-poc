@@ -1,6 +1,7 @@
 package com.archicode.playground.poc.jfx;
 
-import com.archicode.playground.poc.notification.NotificationController;
+import com.archicode.playground.poc.dialog.Dialogs;
+import com.archicode.playground.poc.notification.Notifications;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -361,22 +362,27 @@ public class HomeController implements Initializable {
 
     @FXML
     private void onInfoNotification(MouseEvent event) {
-        new NotificationController().showInfo(workingPane, "This is an example of info notification");
+        Notifications.showInfo(workingPane, "This is an example of info notification");
     }
 
     @FXML
     private void onSuccessNotification(MouseEvent event) {
-        new NotificationController().showSuccess(workingPane, "This is an example of success notification");
+        Notifications.showSuccess(workingPane, "This is an example of success notification");
     }
 
     @FXML
     private void onWarningNotification(MouseEvent event) {
-        new NotificationController().showWarning(workingPane, "This is an example of warning notification");
+        Notifications.showWarning(workingPane, "This is an example of warning notification");
     }
 
     @FXML
     private void onErrorNotification(MouseEvent event) {
-        new NotificationController().showError(workingPane, "This is an example of danger notification");
+        Notifications.showError(workingPane, "This is an example of danger notification");
+    }
+
+    @FXML
+    private void onShowDialog(MouseEvent event) {
+        Dialogs.showAlert(workingPane);
     }
 
 }
