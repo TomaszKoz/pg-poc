@@ -1,4 +1,4 @@
-package com.archicode.playground.poc.jfx;
+package com.archicode.playground.poc.notification;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.animation.*;
@@ -12,17 +12,39 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 /**
+ * Controller for generating application notification bar.
  * @author Tomasz Kozlowski (created on 08.04.2019)
  */
-
 public class NotificationController {
 
+    /** Notification bar */
     private HBox notificationBar;
+    /** Parent pane */
     private Pane parent;
 
-    public void show(Pane parentPane) {
+    /** Shows info type notification */
+    public void showInfo(Pane parentPane, String message) {
+        show(parentPane, message, NotificationType.INFO);
+    }
+
+    /** Shows success type notification */
+    public void showSuccess(Pane parentPane, String message) {
+        show(parentPane, message, NotificationType.SUCCESS);
+    }
+
+    /** Shows warning type notification */
+    public void showWarning(Pane parentPane, String message) {
+        show(parentPane, message, NotificationType.WARNING);
+    }
+
+    /** Shows error type notification */
+    public void showError(Pane parentPane, String message) {
+        show(parentPane, message, NotificationType.DANGER);
+    }
+
+    private void show(Pane parentPane, String message, NotificationType type) {
         this.parent = parentPane;
-        this.notificationBar = createNotificationBar("This is an example of success notification");
+        this.notificationBar = createNotificationBar(message, type);
 
         // calculate notification bar position
         double parentWidth = parent.getWidth();
@@ -42,7 +64,7 @@ public class NotificationController {
         Timeline fadeIn = createTimeline(60, 1.0, Interpolator.EASE_OUT);
 
         // stay still timeline
-        Timeline stayStill = new Timeline(new KeyFrame(Duration.seconds(3)));
+        Timeline stayStill = new Timeline(new KeyFrame(Duration.seconds(5)));
 
         // fade out timeline
         Timeline fadeOut = createTimeline(-30, 0.0, Interpolator.EASE_IN);
@@ -62,17 +84,17 @@ public class NotificationController {
         return timeline;
     }
 
-    private HBox createNotificationBar(String message) {
+    private HBox createNotificationBar(String message, NotificationType type) {
         HBox bar = new HBox();
         bar.setAlignment(Pos.CENTER);
         bar.setPrefWidth(450);
         bar.setPrefHeight(message.length() > 45 ? 70 : 55);
-        bar.setStyle("-fx-background-color: #63D8F1; -fx-background-radius: 10;");
+        bar.setStyle("-fx-background-radius: 10; -fx-background-color: " + type.getColor());
 
         // Icon
         FontAwesomeIconView icon = new FontAwesomeIconView();
-        icon.setGlyphName("DIAMOND");
-        icon.setSize("25");
+        icon.setGlyphName(type.getIcon());
+        icon.setSize("30");
         icon.setSmooth(true);
         icon.setFill(Paint.valueOf("WHITE"));
 

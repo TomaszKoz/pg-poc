@@ -1,18 +1,16 @@
 package com.archicode.playground.poc.jfx;
 
+import com.archicode.playground.poc.notification.NotificationController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
@@ -29,7 +27,6 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Duration;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -284,7 +281,6 @@ public class HomeController implements Initializable {
             JFXButton button = (JFXButton) event.getSource();
             if (activeButton != button) {
                 button.setStyle("-fx-background-color: #3E3E3E;");
-                //button.setOpacity(0.7);
             }
         }
     }
@@ -293,7 +289,9 @@ public class HomeController implements Initializable {
     private void onMenuButtonEnter(MouseEvent event) {
         if (event.getSource() instanceof JFXButton) {
             JFXButton button = (JFXButton) event.getSource();
-            button.setStyle("-fx-background-color: #6C6C6C;");
+            if (activeButton != button) {
+                button.setStyle("-fx-background-color: #6C6C6C;");
+            }
         }
     }
 
@@ -362,27 +360,23 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    public void onInfoNotification(MouseEvent event) {
-        showNotification();
+    private void onInfoNotification(MouseEvent event) {
+        new NotificationController().showInfo(workingPane, "This is an example of info notification");
     }
 
     @FXML
-    public void onSuccessNotification(MouseEvent event) {
-
+    private void onSuccessNotification(MouseEvent event) {
+        new NotificationController().showSuccess(workingPane, "This is an example of success notification");
     }
 
     @FXML
-    public void onWarningNotification(MouseEvent event) {
-
+    private void onWarningNotification(MouseEvent event) {
+        new NotificationController().showWarning(workingPane, "This is an example of warning notification");
     }
 
     @FXML
-    public void onDangerNotification(MouseEvent event) {
-
-    }
-
-    private void showNotification() {
-        new NotificationController().show(workingPane);
+    private void onErrorNotification(MouseEvent event) {
+        new NotificationController().showError(workingPane, "This is an example of danger notification   CGFCGFCG CG GFC GCGFCG");
     }
 
 }
