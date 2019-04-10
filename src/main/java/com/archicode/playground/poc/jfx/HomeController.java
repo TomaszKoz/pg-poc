@@ -376,7 +376,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private void onErrorNotification(MouseEvent event) {
-        new NotificationController().showError(workingPane, "This is an example of danger notification   CGFCGFCG CG GFC GCGFCG");
+        new NotificationController().showError(workingPane, "This is an example of danger notification");
     }
 
 }
