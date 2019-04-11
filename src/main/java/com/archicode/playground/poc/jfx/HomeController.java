@@ -1,5 +1,6 @@
 package com.archicode.playground.poc.jfx;
 
+import com.archicode.playground.poc.dialog.DialogType;
 import com.archicode.playground.poc.dialog.Dialogs;
 import com.archicode.playground.poc.notification.Notifications;
 import com.jfoenix.controls.JFXButton;
@@ -382,7 +383,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private void onShowDialog(MouseEvent event) {
-        Dialogs.showAlert(workingPane);
+        Dialogs.showDialog(workingPane, "Example Dialog", "This is an example dialog with some not interesting text...", DialogType.INFO);
     }
 
 }
