@@ -7,6 +7,7 @@ package com.archicode.playground.poc.css;
 public class StyleClass {
 
     public static final String DIALOG_TITLE = "dialog-title";
+    public static final String DIALOG_MESSAGE = "dialog-message";
     public static final String DIALOG_BUTTON = "dialog-button";
 
 }

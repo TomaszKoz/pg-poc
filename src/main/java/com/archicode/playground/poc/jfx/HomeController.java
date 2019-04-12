@@ -102,82 +102,95 @@ public class HomeController implements Initializable {
         // Line Chart
         XYChart.Series<String, Number> series1 = new XYChart.Series<>();
         series1.setName("Open");
-        series1.getData().add(new XYChart.Data<>("9:00AM", 300));
-        series1.getData().add(new XYChart.Data<>("12:00AM", 400));
-        series1.getData().add(new XYChart.Data<>("3:00PM", 500));
-        series1.getData().add(new XYChart.Data<>("6:00PM", 500));
-        series1.getData().add(new XYChart.Data<>("9:00PM", 600));
-        series1.getData().add(new XYChart.Data<>("12:00PM", 600));
-        series1.getData().add(new XYChart.Data<>("3:00AM", 700));
-        series1.getData().add(new XYChart.Data<>("6:00AM", 700));
+        series1.getData().add(new XYChart.Data<>("9:00", 300));
+        series1.getData().add(new XYChart.Data<>("12:00", 400));
+        series1.getData().add(new XYChart.Data<>("15:00", 500));
+        series1.getData().add(new XYChart.Data<>("18:00", 500));
+        series1.getData().add(new XYChart.Data<>("21:00", 600));
+        series1.getData().add(new XYChart.Data<>("00:00", 600));
+        series1.getData().add(new XYChart.Data<>("3:00", 700));
+        series1.getData().add(new XYChart.Data<>("6:00", 700));
 
         XYChart.Series<String, Number> series2 = new XYChart.Series<>();
         series2.setName("Click");
-        series2.getData().add(new XYChart.Data<>("9:00AM", 50));
-        series2.getData().add(new XYChart.Data<>("12:00AM", 100));
-        series2.getData().add(new XYChart.Data<>("3:00PM", 150));
-        series2.getData().add(new XYChart.Data<>("6:00PM", 150));
-        series2.getData().add(new XYChart.Data<>("9:00PM", 250));
-        series2.getData().add(new XYChart.Data<>("12:00PM", 300));
-        series2.getData().add(new XYChart.Data<>("3:00AM", 350));
-        series2.getData().add(new XYChart.Data<>("6:00AM", 400));
+        series2.getData().add(new XYChart.Data<>("9:00", 50));
+        series2.getData().add(new XYChart.Data<>("12:00", 100));
+        series2.getData().add(new XYChart.Data<>("15:00", 150));
+        series2.getData().add(new XYChart.Data<>("18:00", 150));
+        series2.getData().add(new XYChart.Data<>("21:00", 250));
+        series2.getData().add(new XYChart.Data<>("00:00", 300));
+        series2.getData().add(new XYChart.Data<>("3:00", 350));
+        series2.getData().add(new XYChart.Data<>("6:00", 400));
 
         XYChart.Series<String, Number> series3 = new XYChart.Series<>();
-        series3.setName("Click second time");
-        series3.getData().add(new XYChart.Data<>("9:00AM", 0));
-        series3.getData().add(new XYChart.Data<>("12:00AM", 100));
-        series3.getData().add(new XYChart.Data<>("3:00PM", 50));
-        series3.getData().add(new XYChart.Data<>("6:00PM", 100));
-        series3.getData().add(new XYChart.Data<>("9:00PM", 200));
-        series3.getData().add(new XYChart.Data<>("12:00PM", 300));
-        series3.getData().add(new XYChart.Data<>("3:00AM", 300));
-        series3.getData().add(new XYChart.Data<>("6:00AM", 350));
+        series3.setName("Visit");
+        series3.getData().add(new XYChart.Data<>("9:00", 0));
+        series3.getData().add(new XYChart.Data<>("12:00", 100));
+        series3.getData().add(new XYChart.Data<>("15:00", 50));
+        series3.getData().add(new XYChart.Data<>("18:00", 100));
+        series3.getData().add(new XYChart.Data<>("21:00", 200));
+        series3.getData().add(new XYChart.Data<>("00:00", 300));
+        series3.getData().add(new XYChart.Data<>("3:00", 300));
+        series3.getData().add(new XYChart.Data<>("6:00", 350));
+
+        XYChart.Series<String, Number> series4 = new XYChart.Series<>();
+        series4.setName("Recomended");
+        series4.getData().add(new XYChart.Data<>("9:00", 250));
+        series4.getData().add(new XYChart.Data<>("12:00", 280));
+        series4.getData().add(new XYChart.Data<>("15:00", 300));
+        series4.getData().add(new XYChart.Data<>("18:00", 340));
+        series4.getData().add(new XYChart.Data<>("21:00", 480));
+        series4.getData().add(new XYChart.Data<>("00:00", 375));
+        series4.getData().add(new XYChart.Data<>("3:00", 425));
+        series4.getData().add(new XYChart.Data<>("6:00", 490));
 
         lineChart.getData().add(series1);
         lineChart.getData().add(series2);
         lineChart.getData().add(series3);
+        lineChart.getData().add(series4);
 
         // Pie Chart
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                new PieChart.Data("Open", 40),
-                new PieChart.Data("Bounce", 20),
-                new PieChart.Data("Unsubscribe", 40)
+                new PieChart.Data("Open", 30),
+                new PieChart.Data("Bounce", 25),
+                new PieChart.Data("Click", 10),
+                new PieChart.Data("Unsubscribe", 35)
         );
         pieChart.setData(pieChartData);
 
         // Bar Chart
-        XYChart.Series<String, Number> series4 = new XYChart.Series<>();
-        series4.setName("Tesla Model S");
-        series4.getData().add(new XYChart.Data<>("Jan", 550));
-        series4.getData().add(new XYChart.Data<>("Feb", 450));
-        series4.getData().add(new XYChart.Data<>("Mar", 320));
-        series4.getData().add(new XYChart.Data<>("Apr", 780));
-        series4.getData().add(new XYChart.Data<>("Mai", 550));
-        series4.getData().add(new XYChart.Data<>("Jun", 450));
-        series4.getData().add(new XYChart.Data<>("Jul", 350));
-        series4.getData().add(new XYChart.Data<>("Aug", 450));
-        series4.getData().add(new XYChart.Data<>("Sep", 550));
-        series4.getData().add(new XYChart.Data<>("Oct", 600));
-        series4.getData().add(new XYChart.Data<>("Nov", 750));
-        series4.getData().add(new XYChart.Data<>("Dec", 890));
-
         XYChart.Series<String, Number> series5 = new XYChart.Series<>();
-        series5.setName("BMW 5 Series");
-        series5.getData().add(new XYChart.Data<>("Jan", 400));
-        series5.getData().add(new XYChart.Data<>("Feb", 250));
-        series5.getData().add(new XYChart.Data<>("Mar", 310));
-        series5.getData().add(new XYChart.Data<>("Apr", 580));
-        series5.getData().add(new XYChart.Data<>("Mai", 460));
-        series5.getData().add(new XYChart.Data<>("Jun", 360));
-        series5.getData().add(new XYChart.Data<>("Jul", 300));
-        series5.getData().add(new XYChart.Data<>("Aug", 380));
-        series5.getData().add(new XYChart.Data<>("Sep", 380));
-        series5.getData().add(new XYChart.Data<>("Oct", 400));
-        series5.getData().add(new XYChart.Data<>("Nov", 620));
-        series5.getData().add(new XYChart.Data<>("Dec", 700));
+        series5.setName("Tesla Model S");
+        series5.getData().add(new XYChart.Data<>("Jan", 550));
+        series5.getData().add(new XYChart.Data<>("Feb", 450));
+        series5.getData().add(new XYChart.Data<>("Mar", 320));
+        series5.getData().add(new XYChart.Data<>("Apr", 780));
+        series5.getData().add(new XYChart.Data<>("Mai", 550));
+        series5.getData().add(new XYChart.Data<>("Jun", 450));
+        series5.getData().add(new XYChart.Data<>("Jul", 350));
+        series5.getData().add(new XYChart.Data<>("Aug", 450));
+        series5.getData().add(new XYChart.Data<>("Sep", 550));
+//        series5.getData().add(new XYChart.Data<>("Oct", 600));
+//        series5.getData().add(new XYChart.Data<>("Nov", 750));
+//        series5.getData().add(new XYChart.Data<>("Dec", 890));
 
-        barChart.getData().add(series4);
+        XYChart.Series<String, Number> series6 = new XYChart.Series<>();
+        series6.setName("BMW 5 Series");
+        series6.getData().add(new XYChart.Data<>("Jan", 400));
+        series6.getData().add(new XYChart.Data<>("Feb", 250));
+        series6.getData().add(new XYChart.Data<>("Mar", 310));
+        series6.getData().add(new XYChart.Data<>("Apr", 580));
+        series6.getData().add(new XYChart.Data<>("Mai", 460));
+        series6.getData().add(new XYChart.Data<>("Jun", 360));
+        series6.getData().add(new XYChart.Data<>("Jul", 300));
+        series6.getData().add(new XYChart.Data<>("Aug", 380));
+        series6.getData().add(new XYChart.Data<>("Sep", 380));
+//        series6.getData().add(new XYChart.Data<>("Oct", 400));
+//        series6.getData().add(new XYChart.Data<>("Nov", 620));
+//        series6.getData().add(new XYChart.Data<>("Dec", 700));
+
         barChart.getData().add(series5);
+        barChart.getData().add(series6);
 
         Image image = new Image("/images/faces/face-3.jpg");
         imageCircle.setFill(new ImagePattern(image));
@@ -396,8 +409,8 @@ public class HomeController implements Initializable {
     @FXML
     private void onShowDialogV3(MouseEvent event) {
         Dialogs.showDialog(workingPane, "Example dialog", "This is an example of question dialog with two action buttons and some not interesting text...", DialogType.QUESTION,
-                "ACCEPT", () -> Notifications.showSuccess(workingPane, "User has accepted terms..."),
-                "REJECT", () -> Notifications.showWarning(workingPane, "User has rejected terms...")
+                "ACCEPT", () -> Notifications.showSuccess(workingPane, "User has pushed accept button..."),
+                "REJECT", () -> Notifications.showWarning(workingPane, "User has pushed reject button...")
         );
     }
 

@@ -9,8 +9,8 @@ import lombok.Getter;
 @Getter
 public enum NotificationType {
 
-    INFO("INFO_CIRCLE", "#63D8F1"),
-    SUCCESS("CHECK_CIRCLE", "#8FD61E"),
+    INFO("INFO_CIRCLE", "#5BC0DE"),
+    SUCCESS("CHECK_CIRCLE", "#73CC55"),
     WARNING("WARNING", "#FFBC67"),
     DANGER("EXCLAMATION_CIRCLE", "#FC727A");
 

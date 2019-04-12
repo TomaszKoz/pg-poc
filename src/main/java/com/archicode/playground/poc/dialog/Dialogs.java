@@ -86,7 +86,9 @@ public class Dialogs {
         // Dialog content
         JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(header);
-        content.setBody(new Label(message));
+        Label messageLabel = new Label(message);
+        messageLabel.getStyleClass().add(StyleClass.DIALOG_MESSAGE);
+        content.setBody(messageLabel);
 
         // Action buttons
         HBox buttons = new HBox();
@@ -95,6 +97,7 @@ public class Dialogs {
                 createButton(dialog, action.getKey(), action.getValue())
             );
         }
+        buttons.setSpacing(20);
         content.setActions(buttons);
 
         // Set content and show dialog
@@ -106,7 +109,8 @@ public class Dialogs {
     private static JFXButton createButton(JFXAlert dialog, String name, Action action) {
         JFXButton button = new JFXButton(name);
         button.getStyleClass().add(StyleClass.DIALOG_BUTTON);
-        button.setButtonType(JFXButton.ButtonType.RAISED);
+        button.setButtonType(JFXButton.ButtonType.FLAT);
+        button.setFocusTraversable(false);
         button.setOnAction(event -> {
             dialog.hideWithAnimation();
             action.run();

@@ -9,10 +9,10 @@ import lombok.Getter;
 @Getter
 public enum DialogType {
 
-    INFO("INFO_CIRCLE", "#00a0ff"),
-    QUESTION("QUESTION_CIRCLE", "#6fb94a"),
-    CONFIRM("CHECK_CIRCLE", "#6FB94A"),
-    ERROR("EXCLAMATION_CIRCLE", "#E74141");
+    INFO("INFO_CIRCLE", "#5BC0DE"),
+    QUESTION("QUESTION_CIRCLE", "#5CB85C"),
+    CONFIRM("CHECK_CIRCLE", "#5CB85C"),
+    ERROR("EXCLAMATION_CIRCLE", "#D9534F");
 
     /** Dialog icon name */
     private final String icon;

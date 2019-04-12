@@ -14,12 +14,113 @@
     -fx-padding: 0 0 0 10
 }
 
+.dialog-message {
+    -fx-font-size: 18;
+}
+
 .dialog-button {
     -fx-pref-width: 120;
     -fx-pref-height: 40;
-    -fx-text-fill: #00A0FF;
+    -fx-background-color: #C1E1F4;
+    -fx-text-fill: #028FE3;
     -fx-font-weight: BOLD;
     -fx-padding: 0.7em 0.8em;
+}
+
+/* CHARTS */
+.chart-legend {
+    -fx-background-color:  transparent;
+    -fx-padding: 10px;
+}
+
+.chart-legend-item-symbol{
+    -fx-background-radius: 5;
+}
+
+.chart-plot-background {
+    -fx-background-color: #FAFAFA;
+}
+
+.axis {
+    -fx-tick-length: 10;
+    -fx-minor-tick-length: 5;
+    -fx-tick-label-gap: 8;
+}
+
+.default-color0.chart-series-line {
+    -fx-stroke: #1DC7EA;
+    -fx-stroke-width: 4;
+    -fx-effect: dropshadow(one-pass-box, grey, 20, 0, 4, 4);
+}
+
+.default-color0.chart-line-symbol {
+    -fx-background-color: #1DC7EA, #1DC7EA;
+}
+
+.default-color1.chart-series-line {
+    -fx-stroke: #FB404B;
+    -fx-stroke-width: 4;
+    -fx-effect: dropshadow(one-pass-box, grey, 20, 0, 4, 4);
+}
+
+.default-color1.chart-line-symbol {
+    -fx-background-color: #FB404B, #FB404B;
+}
+
+.default-color2.chart-series-line {
+    -fx-stroke: #FFA534;
+    -fx-stroke-width: 4;
+    -fx-effect: dropshadow(one-pass-box, grey, 20, 0, 4, 4);
+}
+
+.default-color2.chart-line-symbol {
+    -fx-background-color: #FFA534, #FFA534;
+}
+
+.default-color3.chart-series-line {
+    -fx-stroke: #73CC55;
+    -fx-stroke-width: 4;
+    -fx-effect: dropshadow(one-pass-box, grey, 20, 0, 4, 4);
+}
+
+.default-color3.chart-line-symbol {
+    -fx-background-color: #73CC55, #73CC55;
+}
+
+.default-color0.chart-bar {
+    -fx-bar-fill: #1DC7EA;
+    -fx-effect: dropshadow(one-pass-box, grey, 20, 0, 4, 4);
+}
+
+.default-color1.chart-bar {
+    -fx-bar-fill: #FB404B;
+    -fx-effect: dropshadow(one-pass-box, grey, 20, 0, 4, 4);
+}
+
+.default-color2.chart-bar {
+    -fx-bar-fill: #FFA534;
+    -fx-effect: dropshadow(one-pass-box, grey, 20, 0, 4, 4);
+}
+
+.default-color3.chart-bar {
+    -fx-bar-fill: #73CC55;
+    -fx-effect: dropshadow(one-pass-box, grey, 20, 0, 4, 4);
+}
+
+.default-color0.chart-pie {
+    -fx-pie-color: #1DC7EA;
+}
+
+.default-color1.chart-pie {
+    -fx-pie-color: #FB404B;
+}
+
+.default-color2.chart-pie {
+    -fx-pie-color: #FFA534;
+}
+
+.default-color3.chart-pie {
+    -fx-pie-color: #73CC55;
 }
 
 /* ==================== */
