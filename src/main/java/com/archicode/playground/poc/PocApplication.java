@@ -21,6 +21,7 @@ public class PocApplication extends Application {
         System.setProperty("prism.lcdtext", "false");
         Parent root = FXMLLoader.load(getClass().getResource("jfx/Home.fxml"));
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("stylesheet.css");
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();

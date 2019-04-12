@@ -728,7 +728,22 @@
                                  <Font size="24.0" />
                               </font>
                            </Label>
-                           <JFXButton buttonType="RAISED" layoutX="23.0" layoutY="438.0" onMouseClicked="#onShowDialog" prefHeight="49.0" prefWidth="215.0" style="-fx-background-color: #BBBBBB;" text="DIALOG" textFill="WHITE">
+                           <JFXButton layoutX="23.0" layoutY="438.0" onMouseClicked="#onShowDialogV1" prefHeight="49.0" prefWidth="170.0" style="-fx-background-color: #F0F0F0; -fx-border-color: A0A0A0;" text="DIALOG v1" textFill="#757575">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </JFXButton>
+                           <JFXButton layoutX="228.0" layoutY="438.0" onMouseClicked="#onShowDialogV2" prefHeight="49.0" prefWidth="170.0" style="-fx-background-color: #F0F0F0; -fx-border-color: A0A0A0;" text="DIALOG v2" textFill="#757575">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </JFXButton>
+                           <JFXButton layoutX="628.0" layoutY="438.0" onMouseClicked="#onShowDialogV4" prefHeight="49.0" prefWidth="170.0" style="-fx-background-color: #F0F0F0; -fx-border-color: A0A0A0;" text="DIALOG v4" textFill="#757575">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </JFXButton>
+                           <JFXButton layoutX="430.0" layoutY="438.0" onMouseClicked="#onShowDialogV3" prefHeight="49.0" prefWidth="170.0" style="-fx-background-color: #F0F0F0; -fx-border-color: A0A0A0;" text="DIALOG v3" textFill="#757575">
                               <font>
                                  <Font size="16.0" />
                               </font>

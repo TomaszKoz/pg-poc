@@ -20,6 +20,7 @@ import java.util.Map;
  * Utility class provides functionality for generating application notification bar.
  * @author Tomasz Kozlowski (created on 08.04.2019)
  */
+@SuppressWarnings("unused")
 public class Notifications {
 
     /** Static lock object for access to notification queue */

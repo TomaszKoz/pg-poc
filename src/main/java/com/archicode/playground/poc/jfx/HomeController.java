@@ -382,8 +382,32 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void onShowDialog(MouseEvent event) {
-        Dialogs.showDialog(workingPane, "Example Dialog", "This is an example dialog with some not interesting text...", DialogType.INFO);
+    private void onShowDialogV1(MouseEvent event) {
+        Dialogs.showDialog(workingPane, "This is an example of simple dialog with no actions buttons and with some not interesting text...");
+    }
+
+    @FXML
+    private void onShowDialogV2(MouseEvent event) {
+        Dialogs.showDialog(workingPane, "Example dialog", "This is an example of information dialog with one action button and some not interesting text...", DialogType.INFO,
+                "CLOSE", () -> {}
+        );
+    }
+
+    @FXML
+    private void onShowDialogV3(MouseEvent event) {
+        Dialogs.showDialog(workingPane, "Example dialog", "This is an example of question dialog with two action buttons and some not interesting text...", DialogType.QUESTION,
+                "ACCEPT", () -> Notifications.showSuccess(workingPane, "User has accepted terms..."),
+                "REJECT", () -> Notifications.showWarning(workingPane, "User has rejected terms...")
+        );
+    }
+
+    @FXML
+    private void onShowDialogV4(MouseEvent event) {
+        Dialogs.showDialog(workingPane, "Example dialog", "This is an example of error dialog with three actions buttons and some not interesting text...", DialogType.ERROR,
+                "INFO", () -> Notifications.showInfo(workingPane, "User has selected info action..."),
+                "WARNING", () -> Notifications.showWarning(workingPane, "User has selected warning action..."),
+                "ERROR", () -> Notifications.showError(workingPane, "User has selected error action...")
+        );
     }
 
 }

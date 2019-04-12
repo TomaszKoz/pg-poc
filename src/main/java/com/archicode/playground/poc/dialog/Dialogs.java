@@ -1,5 +1,6 @@
 package com.archicode.playground.poc.dialog;
 
+import com.archicode.playground.poc.css.StyleClass;
 import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -12,17 +13,56 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
+ * Utility class provides functionality for generating application dialogs.
  * @author Tomasz Kozlowski (created on 10.04.2019)
  */
+@SuppressWarnings("unused")
 public class Dialogs {
 
-    public static void showDialog(Pane parent, String title, String message, DialogType dialogType) {
+    /** Creates and shows custom dialog with no action buttons */
+    public static void showDialog(Pane parent, String message) {
+        showDialog(parent, null, message, null, true, Collections.emptyMap());
+    }
+
+    /** Creates and shows custom dialog with one action button */
+    public static void showDialog(Pane parent, String title, String message, DialogType dialogType, String buttonName1, Action buttonAction1) {
+        Map<String, Action> actions = new LinkedHashMap<>(1);
+        actions.put(buttonName1, buttonAction1);
+        showDialog(parent, title, message, dialogType, false, actions);
+    }
+
+    /** Creates and shows custom dialog with two action buttons */
+    public static void showDialog(Pane parent, String title, String message, DialogType dialogType, String buttonName1, Action buttonAction1,
+                                  String buttonName2, Action buttonAction2) {
+        Map<String, Action> actions = new LinkedHashMap<>(2);
+        actions.put(buttonName1, buttonAction1);
+        actions.put(buttonName2, buttonAction2);
+        showDialog(parent, title, message, dialogType, false, actions);
+    }
+
+    /** Creates and shows custom dialog with three action buttons */
+    public static void showDialog(Pane parent, String title, String message, DialogType dialogType, String buttonName1, Action buttonAction1,
+                                  String buttonName2, Action buttonAction2, String buttonName3, Action buttonAction3) {
+        Map<String, Action> actions = new LinkedHashMap<>(3);
+        actions.put(buttonName1, buttonAction1);
+        actions.put(buttonName2, buttonAction2);
+        actions.put(buttonName3, buttonAction3);
+        showDialog(parent, title, message, dialogType, false, actions);
+    }
+
+    /** Creates and shows custom dialog */
+    private static void showDialog(Pane parent, String title, String message, DialogType dialogType, boolean overlayClose, Map<String, Action> actions) {
+        // Dialog
         JFXAlert dialog = new JFXAlert((Stage) parent.getScene().getWindow());
         dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.setOverlayClose(false); // todo if there is no buttons than set to true
+        dialog.setOverlayClose(overlayClose);
 
-        // header
+        // Header
         HBox header = new HBox();
         header.setAlignment(Pos.CENTER_LEFT);
 
@@ -37,24 +77,41 @@ public class Dialogs {
         }
 
         // Title label
-        Label titleLabel = new Label(title);
-        titleLabel.setStyle("-fx-font-size: 20; -fx-padding: 0 0 0 10"); // TODO przeniesc do styli
-        header.getChildren().add(titleLabel);
+        if (title != null) {
+            Label titleLabel = new Label(title);
+            titleLabel.getStyleClass().add(StyleClass.DIALOG_TITLE);
+            header.getChildren().add(titleLabel);
+        }
 
+        // Dialog content
         JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(header);
         content.setBody(new Label(message));
 
-        // TODO action buttons
-        JFXButton button = new JFXButton("ACCEPT");
-        //button.setStyle("-fx-text-fill: #03A9F4; -fx-font-weight: BOLD; -fx-padding: 0.7em 0.8em;");
-        button.setStyle("-fx-pref-width:120; -fx-pref-height: 40; -fx-text-fill: #00a0ff; -fx-font-weight: BOLD; -fx-padding: 0.7em 0.8em;");
-        button.setButtonType(JFXButton.ButtonType.RAISED);
-        button.setOnAction(event -> dialog.hideWithAnimation());
-        content.setActions(button);
+        // Action buttons
+        HBox buttons = new HBox();
+        for (Map.Entry<String, Action> action : actions.entrySet()) {
+            buttons.getChildren().add(
+                createButton(dialog, action.getKey(), action.getValue())
+            );
+        }
+        content.setActions(buttons);
 
+        // Set content and show dialog
         dialog.setContent(content);
         dialog.show();
+    }
+
+    /** Creates dialog action button */
+    private static JFXButton createButton(JFXAlert dialog, String name, Action action) {
+        JFXButton button = new JFXButton(name);
+        button.getStyleClass().add(StyleClass.DIALOG_BUTTON);
+        button.setButtonType(JFXButton.ButtonType.RAISED);
+        button.setOnAction(event -> {
+            dialog.hideWithAnimation();
+            action.run();
+        });
+        return button;
     }
 
 }

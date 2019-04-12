@@ -1,6 +1,25 @@
-.border-panel{
+.border-panel {
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 10;
     -fx-border-color:  #E7E7E7;
     -fx-border-radius: 10;
 }
+
+
+
+
+/* DIALOG */
+.dialog-title {
+    -fx-font-size: 20;
+    -fx-padding: 0 0 0 10
+}
+
+.dialog-button {
+    -fx-pref-width: 120;
+    -fx-pref-height: 40;
+    -fx-text-fill: #00A0FF;
+    -fx-font-weight: BOLD;
+    -fx-padding: 0.7em 0.8em;
+}
+
+/* ==================== */
