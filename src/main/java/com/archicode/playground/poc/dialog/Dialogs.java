@@ -1,5 +1,6 @@
 package com.archicode.playground.poc.dialog;
 
+import com.archicode.playground.poc.Application;
 import com.archicode.playground.poc.css.StyleClass;
 import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXButton;
@@ -8,10 +9,8 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -25,40 +24,40 @@ import java.util.Map;
 public class Dialogs {
 
     /** Creates and shows custom dialog with no action buttons */
-    public static void showDialog(Pane parent, String message) {
-        showDialog(parent, null, message, null, true, Collections.emptyMap());
+    public static void showDialog(String message) {
+        showDialog(null, message, null, true, Collections.emptyMap());
     }
 
     /** Creates and shows custom dialog with one action button */
-    public static void showDialog(Pane parent, String title, String message, DialogType dialogType, String buttonName1, Action buttonAction1) {
+    public static void showDialog(String title, String message, DialogType dialogType, String buttonName1, Action buttonAction1) {
         Map<String, Action> actions = new LinkedHashMap<>(1);
         actions.put(buttonName1, buttonAction1);
-        showDialog(parent, title, message, dialogType, false, actions);
+        showDialog(title, message, dialogType, false, actions);
     }
 
     /** Creates and shows custom dialog with two action buttons */
-    public static void showDialog(Pane parent, String title, String message, DialogType dialogType, String buttonName1, Action buttonAction1,
+    public static void showDialog(String title, String message, DialogType dialogType, String buttonName1, Action buttonAction1,
                                   String buttonName2, Action buttonAction2) {
         Map<String, Action> actions = new LinkedHashMap<>(2);
         actions.put(buttonName1, buttonAction1);
         actions.put(buttonName2, buttonAction2);
-        showDialog(parent, title, message, dialogType, false, actions);
+        showDialog(title, message, dialogType, false, actions);
     }
 
     /** Creates and shows custom dialog with three action buttons */
-    public static void showDialog(Pane parent, String title, String message, DialogType dialogType, String buttonName1, Action buttonAction1,
+    public static void showDialog(String title, String message, DialogType dialogType, String buttonName1, Action buttonAction1,
                                   String buttonName2, Action buttonAction2, String buttonName3, Action buttonAction3) {
         Map<String, Action> actions = new LinkedHashMap<>(3);
         actions.put(buttonName1, buttonAction1);
         actions.put(buttonName2, buttonAction2);
         actions.put(buttonName3, buttonAction3);
-        showDialog(parent, title, message, dialogType, false, actions);
+        showDialog(title, message, dialogType, false, actions);
     }
 
     /** Creates and shows custom dialog */
-    private static void showDialog(Pane parent, String title, String message, DialogType dialogType, boolean overlayClose, Map<String, Action> actions) {
+    private static void showDialog(String title, String message, DialogType dialogType, boolean overlayClose, Map<String, Action> actions) {
         // Dialog
-        JFXAlert dialog = new JFXAlert((Stage) parent.getScene().getWindow());
+        JFXAlert dialog = new JFXAlert(Application.getStage());
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setOverlayClose(overlayClose);
 

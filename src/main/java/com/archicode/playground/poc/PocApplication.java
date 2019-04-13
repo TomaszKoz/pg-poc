@@ -18,13 +18,7 @@ public class PocApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        System.setProperty("prism.lcdtext", "false");
-        Parent root = FXMLLoader.load(getClass().getResource("jfx/Home.fxml"));
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("stylesheet.css");
-        primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.show();
+        com.archicode.playground.poc.Application.start(primaryStage, "jfx/Home.fxml");
     }
 
 }

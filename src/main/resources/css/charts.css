@@ -1,33 +1,4 @@
-.border-panel {
-    -fx-background-color: #FFFFFF;
-    -fx-background-radius: 10;
-    -fx-border-color:  #E7E7E7;
-    -fx-border-radius: 10;
-}
 
-
-
-
-/* DIALOG */
-.dialog-title {
-    -fx-font-size: 20;
-    -fx-padding: 0 0 0 10
-}
-
-.dialog-message {
-    -fx-font-size: 18;
-}
-
-.dialog-button {
-    -fx-pref-width: 120;
-    -fx-pref-height: 40;
-    -fx-background-color: #C1E1F4;
-    -fx-text-fill: #028FE3;
-    -fx-font-weight: BOLD;
-    -fx-padding: 0.7em 0.8em;
-}
-
-/* CHARTS */
 .chart-legend {
     -fx-background-color:  transparent;
     -fx-padding: 10px;
@@ -123,4 +94,9 @@
     -fx-pie-color: #73CC55;
 }
 
-/* ==================== */
+.chart-value-info {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 20;
+    -fx-border-color: #E7E7E7;
+    -fx-border-radius: 20;
+}

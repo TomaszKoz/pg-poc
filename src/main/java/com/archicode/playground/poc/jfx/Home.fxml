@@ -27,7 +27,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="1366.0" stylesheets="file:/D:/prj/pg-poc/src/main/resources/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archicode.playground.poc.jfx.HomeController">
+<AnchorPane fx:id="workingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="1366.0" stylesheets="file:/D:/prj/pg-poc/src/main/resources/css/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archicode.playground.poc.jfx.HomeController">
     <ImageView fx:id="background" fitHeight="670.0" fitWidth="260.0" layoutY="60.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0">
         <Image url="file:/D:/prj/pg-poc/src/main/resources/images/sidebar-3.jpg" />
     </ImageView>
@@ -90,7 +90,7 @@
     </Pane>
     <ScrollPane focusTraversable="false" hbarPolicy="NEVER" layoutX="260.0" prefHeight="900.0" prefWidth="1090.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <content>
-          <AnchorPane fx:id="workingPane" minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="1470.0" prefWidth="1090.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="1470.0" prefWidth="1090.0">
             <children>
                <Pane prefHeight="60.0" prefWidth="1090.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="1410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>

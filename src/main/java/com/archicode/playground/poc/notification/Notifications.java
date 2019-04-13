@@ -1,12 +1,15 @@
 package com.archicode.playground.poc.notification;
 
+import com.archicode.playground.poc.Application;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.animation.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
@@ -33,30 +36,30 @@ public class Notifications {
     }
 
     /** Shows info type notification */
-    public static void showInfo(Pane parent, String message) {
-        showNotification(parent, message, NotificationType.INFO);
+    public static void showInfo(String message) {
+        showNotification(message, NotificationType.INFO);
     }
 
     /** Shows success type notification */
-    public static void showSuccess(Pane parent, String message) {
-        showNotification(parent, message, NotificationType.SUCCESS);
+    public static void showSuccess(String message) {
+        showNotification(message, NotificationType.SUCCESS);
     }
 
     /** Shows warning type notification */
-    public static void showWarning(Pane parent, String message) {
-        showNotification(parent, message, NotificationType.WARNING);
+    public static void showWarning(String message) {
+        showNotification(message, NotificationType.WARNING);
     }
 
     /** Shows error type notification */
-    public static void showError(Pane parent, String message) {
-        showNotification(parent, message, NotificationType.DANGER);
+    public static void showError(String message) {
+        showNotification(message, NotificationType.DANGER);
     }
 
     /** Puts notification to queue */
-    private static void showNotification(Pane parent, String message, NotificationType type) {
+    private static void showNotification(String message, NotificationType type) {
         synchronized (LOCK) {
             if (!QUEUE.keySet().contains(message)) {
-                Notification notification = new Notification(parent, message, type);
+                Notification notification = new Notification(message, type);
                 QUEUE.put(message, notification);
                 // if there is only one notification show it
                 if (QUEUE.size() == 1) {
@@ -71,8 +74,8 @@ public class Notifications {
         synchronized (LOCK) {
             // removes notification from queue
             QUEUE.remove(notification.getMessage());
-            // removes notification bar from UI component
-            notification.getParent().getChildren().remove(bar);
+            // removes notification bar from main pane
+            Application.removeNode(bar);
             // if queue is not empty then show first notification
             if (!QUEUE.isEmpty()) {
                 String key = QUEUE.keySet().iterator().next();
@@ -83,11 +86,10 @@ public class Notifications {
 
     /** Generates nad shows notification bar */
     private static void showNotificationBar(Notification notification) {
-        Pane parent = notification.getParent();
         HBox bar = createNotificationBar(notification.getMessage(), notification.getType());
 
         // calculate notification bar position
-        double parentWidth = parent.getWidth();
+        double parentWidth = Application.getMainPane().getWidth();
         double barWidth = bar.getPrefWidth();
         double barPositionX = (parentWidth / 2) - (barWidth / 2);
         if (barPositionX < 0) {
@@ -98,7 +100,7 @@ public class Notifications {
         bar.setLayoutY(-30);
         bar.setOpacity(0.0);
         bar.toFront();
-        parent.getChildren().add(bar);
+        Application.addNode(bar);
 
         // fade in timeline
         Timeline fadeIn = createTimeline(bar, 60, 1.0, Interpolator.EASE_OUT);
@@ -117,12 +119,10 @@ public class Notifications {
 
     /** Creates timeline for notification animation */
     private static Timeline createTimeline(HBox bar, Number yEndValue, Number opacityEndValue, Interpolator interpolator) {
-        Timeline timeline = new Timeline();
         KeyValue yValue = new KeyValue(bar.translateYProperty(), yEndValue, interpolator);
         KeyValue opacityValue = new KeyValue(bar.opacityProperty(), opacityEndValue, interpolator);
         KeyFrame keyFrame = new KeyFrame(Duration.millis(320), yValue, opacityValue);
-        timeline.getKeyFrames().add(keyFrame);
-        return timeline;
+        return new Timeline(keyFrame);
     }
 
     /** Creates notification bar */
@@ -132,6 +132,7 @@ public class Notifications {
         bar.setPrefWidth(450);
         bar.setPrefHeight(message.length() > 45 ? 70 : 55);
         bar.setStyle("-fx-background-radius: 15; -fx-background-color: " + type.getColor());
+        bar.setEffect(new DropShadow(BlurType.THREE_PASS_BOX, Color.GRAY, 20, 0, 5, 5));
 
         // Icon
         FontAwesomeIconView icon = new FontAwesomeIconView();
@@ -158,8 +159,6 @@ public class Notifications {
     @Getter
     @AllArgsConstructor
     private static class Notification {
-        /** Parent pane for notification */
-        private Pane parent;
         /** Message to show in notification */
         private String message;
         /** Notification style type */

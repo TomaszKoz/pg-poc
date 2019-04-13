@@ -3,15 +3,18 @@ package com.archicode.playground.poc.jfx;
 import com.archicode.playground.poc.dialog.DialogType;
 import com.archicode.playground.poc.dialog.Dialogs;
 import com.archicode.playground.poc.notification.Notifications;
+import com.archicode.playground.poc.utils.ChartUtils;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
@@ -30,6 +33,7 @@ import javafx.scene.web.WebView;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 /**
@@ -148,6 +152,8 @@ public class HomeController implements Initializable {
         lineChart.getData().add(series2);
         lineChart.getData().add(series3);
         lineChart.getData().add(series4);
+        setAnimation(lineChart);
+        ChartUtils.createValueNotifications(lineChart);
 
         // Pie Chart
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
@@ -157,6 +163,25 @@ public class HomeController implements Initializable {
                 new PieChart.Data("Unsubscribe", 35)
         );
         pieChart.setData(pieChartData);
+
+        pieChartData.forEach(pieData -> {
+            pieData.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                Bounds b1 = pieData.getNode().getBoundsInLocal();
+                double newX = (b1.getWidth()) / 2 + b1.getMinX();
+                double newY = (b1.getHeight()) / 2 + b1.getMinY();
+                // Make sure pie wedge location is reset
+                pieData.getNode().setTranslateX(0);
+                pieData.getNode().setTranslateY(0);
+                TranslateTransition tt = new TranslateTransition(
+                        Duration.millis(500), pieData.getNode());
+                tt.setByX(newX);
+                tt.setByY(newY);
+                tt.setAutoReverse(true);
+                tt.setCycleCount(2);
+                tt.play();
+            });
+        });
+
 
         // Bar Chart
         XYChart.Series<String, Number> series5 = new XYChart.Series<>();
@@ -191,9 +216,27 @@ public class HomeController implements Initializable {
 
         barChart.getData().add(series5);
         barChart.getData().add(series6);
+        setAnimation(barChart);
+        ChartUtils.createValueNotifications(barChart);
 
         Image image = new Image("/images/faces/face-3.jpg");
         imageCircle.setFill(new ImagePattern(image));
+    }
+
+    private void setAnimation(XYChart<String, Number> chart) {
+        chart.setOnMouseClicked(e -> {
+            chart.getData().forEach(data -> {
+                data.getData().forEach(column -> {
+                    int transition = new Random().nextInt(300);
+                    double posY = column.getYValue().doubleValue();
+                    if (posY > 400) {
+                        column.setYValue(posY - transition);
+                    } else {
+                        column.setYValue(posY + transition);
+                    }
+                });
+            });
+        });
     }
 
     @FXML
@@ -376,50 +419,50 @@ public class HomeController implements Initializable {
 
     @FXML
     private void onInfoNotification(MouseEvent event) {
-        Notifications.showInfo(workingPane, "This is an example of info notification");
+        Notifications.showInfo("This is an example of info notification");
     }
 
     @FXML
     private void onSuccessNotification(MouseEvent event) {
-        Notifications.showSuccess(workingPane, "This is an example of success notification");
+        Notifications.showSuccess("This is an example of success notification");
     }
 
     @FXML
     private void onWarningNotification(MouseEvent event) {
-        Notifications.showWarning(workingPane, "This is an example of warning notification");
+        Notifications.showWarning("This is an example of warning notification");
     }
 
     @FXML
     private void onErrorNotification(MouseEvent event) {
-        Notifications.showError(workingPane, "This is an example of danger notification");
+        Notifications.showError("This is an example of danger notification");
     }
 
     @FXML
     private void onShowDialogV1(MouseEvent event) {
-        Dialogs.showDialog(workingPane, "This is an example of simple dialog with no actions buttons and with some not interesting text...");
+        Dialogs.showDialog("This is an example of simple dialog with no actions buttons and with some not interesting text...");
     }
 
     @FXML
     private void onShowDialogV2(MouseEvent event) {
-        Dialogs.showDialog(workingPane, "Example dialog", "This is an example of information dialog with one action button and some not interesting text...", DialogType.INFO,
+        Dialogs.showDialog("Example dialog", "This is an example of information dialog with one action button and some not interesting text...", DialogType.INFO,
                 "CLOSE", () -> {}
         );
     }
 
     @FXML
     private void onShowDialogV3(MouseEvent event) {
-        Dialogs.showDialog(workingPane, "Example dialog", "This is an example of question dialog with two action buttons and some not interesting text...", DialogType.QUESTION,
-                "ACCEPT", () -> Notifications.showSuccess(workingPane, "User has pushed accept button..."),
-                "REJECT", () -> Notifications.showWarning(workingPane, "User has pushed reject button...")
+        Dialogs.showDialog("Example dialog", "This is an example of question dialog with two action buttons and some not interesting text...", DialogType.QUESTION,
+                "ACCEPT", () -> Notifications.showSuccess("User has pushed accept button..."),
+                "REJECT", () -> Notifications.showWarning("User has pushed reject button...")
         );
     }
 
     @FXML
     private void onShowDialogV4(MouseEvent event) {
-        Dialogs.showDialog(workingPane, "Example dialog", "This is an example of error dialog with three actions buttons and some not interesting text...", DialogType.ERROR,
-                "INFO", () -> Notifications.showInfo(workingPane, "User has selected info action..."),
-                "WARNING", () -> Notifications.showWarning(workingPane, "User has selected warning action..."),
-                "ERROR", () -> Notifications.showError(workingPane, "User has selected error action...")
+        Dialogs.showDialog("Example dialog", "This is an example of error dialog with three actions buttons and some not interesting text...", DialogType.ERROR,
+                "INFO", () -> Notifications.showInfo("User has selected info action..."),
+                "WARNING", () -> Notifications.showWarning("User has selected warning action..."),
+                "ERROR", () -> Notifications.showError("User has selected error action...")
         );
     }
 
