@@ -1,7 +1,12 @@
 
+.chart {
+    -fx-font-size: 15;
+}
+
 .chart-legend {
     -fx-background-color:  transparent;
     -fx-padding: 10px;
+    -fx-font-size: 16;
 }
 
 .chart-legend-item-symbol{
@@ -16,6 +21,7 @@
     -fx-tick-length: 10;
     -fx-minor-tick-length: 5;
     -fx-tick-label-gap: 8;
+
 }
 
 .default-color0.chart-series-line {
