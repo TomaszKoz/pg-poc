@@ -1,6 +1,6 @@
 package com.archicode.playground.poc;
 
-import javafx.application.Platform;
+import com.archicode.playground.poc.logger.AppLogger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -11,6 +11,8 @@ import lombok.Getter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import sun.reflect.CallerSensitive;
 
 import java.io.IOException;
@@ -19,7 +21,9 @@ import java.io.IOException;
  * Class responsible for configure and start application.
  * @author Tomasz Kozlowski (created on 13.04.2019)
  */
-//@SpringBootApplication
+@SpringBootApplication
+@EnableTransactionManagement
+@EnableJpaRepositories(basePackages = "com.archicode.playground.poc")
 @SuppressWarnings("WeakerAccess")
 public class Application {
 
@@ -31,18 +35,17 @@ public class Application {
     @Getter
     private static Pane mainPane;
 
-    /** Inits application context */
-    public static void init(ConfigurableApplicationContext applicationContext) {
-        springContext = applicationContext;
+    /** Initializes application context */
+    public static void init() {
+        springContext = SpringApplication.run(Application.class);
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(springContext::getBean);
-        System.setProperty("prism.lcdtext", "false");
     }
 
     /** Configures and starts application */
     public static void start(Stage primaryStage, String fxmlFile) throws Exception {
-        // Load FXML
-        mainPane = loadFXML("jfx/Home.fxml");
+        // Load FXML document
+        mainPane = loadFXML(fxmlFile);
 
         // Scene
         Scene scene = new Scene(mainPane);
@@ -53,11 +56,14 @@ public class Application {
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
+
+        AppLogger.info("Application has been started...");
     }
 
     /** Stops application */
     public static void stop() {
         springContext.stop();
+        AppLogger.info("Application has been stopped...");
     }
 
     /** Loads a FXML document */
@@ -72,7 +78,7 @@ public class Application {
 
     /** Returns main application stage */
     public static Stage getStage() {
-        return (Stage) Application.mainPane.getScene().getWindow();
+        return (Stage) mainPane.getScene().getWindow();
     }
 
     /** Adds node to the main pane */

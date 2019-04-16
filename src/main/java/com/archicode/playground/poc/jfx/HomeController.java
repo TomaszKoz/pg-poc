@@ -2,7 +2,10 @@ package com.archicode.playground.poc.jfx;
 
 import com.archicode.playground.poc.dialog.DialogType;
 import com.archicode.playground.poc.dialog.Dialogs;
+import com.archicode.playground.poc.logger.AppLogger;
 import com.archicode.playground.poc.notification.Notifications;
+import com.archicode.playground.poc.spring.user.UserProfile;
+import com.archicode.playground.poc.spring.user.UserProfileService;
 import com.archicode.playground.poc.utils.ChartUtils;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
@@ -31,9 +34,12 @@ import javafx.scene.shape.Circle;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Duration;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -41,7 +47,10 @@ import java.util.ResourceBundle;
  * @author Tomasz Kozlowski (created on 22.03.2019)
  */
 @Controller
+@RequiredArgsConstructor
 public class HomeController implements Initializable {
+
+    private final UserProfileService userProfileService;
 
     @FXML
     private AnchorPane workingPane;
@@ -225,6 +234,16 @@ public class HomeController implements Initializable {
 
         Image image = new Image("/images/faces/face-3.jpg");
         imageCircle.setFill(new ImagePattern(image));
+
+        // Spring
+        List<UserProfile> profiles = userProfileService.findAll();
+        AppLogger.info("profiles count: " + profiles.size());
+
+        UserProfile profile = userProfileService.createExampleUserProfile();
+        AppLogger.info("saved user profile: " + profile);
+
+        profiles = userProfileService.findAll();
+        AppLogger.info("profiles count: " + profiles.size());
     }
 
     private void setAnimation(XYChart<String, Number> chart) {
