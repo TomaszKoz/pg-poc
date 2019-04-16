@@ -1,3 +1,9 @@
+
+*{
+    -fx-font-smoothing-type: gray;
+}
+
+
 .border-panel {
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 10;

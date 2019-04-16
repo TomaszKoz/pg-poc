@@ -31,6 +31,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Duration;
+import org.springframework.stereotype.Controller;
 
 import java.net.URL;
 import java.util.Random;
@@ -39,6 +40,7 @@ import java.util.ResourceBundle;
 /**
  * @author Tomasz Kozlowski (created on 22.03.2019)
  */
+@Controller
 public class HomeController implements Initializable {
 
     @FXML
@@ -93,7 +95,7 @@ public class HomeController implements Initializable {
     @FXML
     private Circle imageCircle;
     @FXML
-    private WebView webView = new WebView();
+    private WebView webView;
     @FXML
     private Label titleLabel;
 
@@ -103,6 +105,8 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        webView = new WebView();
+
         // Line Chart
         XYChart.Series<String, Number> series1 = new XYChart.Series<>();
         series1.setName("Open");
