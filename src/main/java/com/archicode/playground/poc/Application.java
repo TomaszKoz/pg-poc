@@ -11,7 +11,6 @@ import lombok.Getter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import sun.reflect.CallerSensitive;
 
@@ -23,8 +22,6 @@ import java.io.IOException;
  */
 @SpringBootApplication
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.archicode.playground.poc")
-@SuppressWarnings("WeakerAccess")
 public class Application {
 
     /** Spring application context */

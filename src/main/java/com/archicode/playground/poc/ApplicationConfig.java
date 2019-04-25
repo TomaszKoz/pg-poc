@@ -1,21 +1,25 @@
 package com.archicode.playground.poc;
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.jpa.HibernatePersistenceProvider;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.Database;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import java.util.Properties;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Tomasz Kozlowski (created on 16.04.2019)
@@ -25,28 +29,55 @@ import java.util.Properties;
 public class ApplicationConfig {
 
     @Bean
-    @Qualifier("AppDataSource")
-    public DataSource dataSource(Environment environment) {
-        HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setUsername(environment.getProperty("database.username"));
-        dataSource.setPassword(environment.getProperty("database.password"));
-        dataSource.setJdbcUrl(environment.getProperty("database.url"));
-        dataSource.setDriverClassName(environment.getProperty("database.driver"));
-        return dataSource;
+    @Primary
+    public DataSource dataSource(DataSourceProperties properties) {
+        return DataSourceBuilder.create().build();
+        /*HikariDataSource dataSource = (HikariDataSource) DataSourceBuilder.create()
+                .type(properties.getType())
+                .driverClassName(properties.getDriverClassName())
+                .url(properties.getUrl())
+                .username(properties.getUsername())
+                .password(properties.getPassword())
+                .build();
+
+        // Hikari properties
+        dataSource.setPoolName("AppConnectionPool");
+        dataSource.setMaximumPoolSize(5);
+        dataSource.setMinimumIdle(2);
+        return dataSource;*/
     }
 
     @Bean
-    public PropertiesFactoryBean jpaProperties() {
-        PropertiesFactoryBean factoryBean = new PropertiesFactoryBean();
-        factoryBean.setLocation(new ClassPathResource("config/jpa.properties"));
-        return factoryBean;
-    }
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSourceProperties dataSourceProperties, DataSource dataSource) {
+        // JPA Properties
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("hibernate.ddl-auto", "create-drop");
+        // hibernate.hbm2ddl.auto -> update
+        properties.put("hibernate.show_sql", true);
+        properties.put("hibernate.format_sql", true);
+        properties.put("hibernate.connection.provider_class", "org.hibernate.hikaricp.internal.HikariCPConnectionProvider");
 
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Qualifier("AppDataSource") DataSource dataSource, Properties jpaProperties) {
+        properties.put(AvailableSettings.DRIVER, dataSourceProperties.getDriverClassName());
+        properties.put(AvailableSettings.URL, dataSourceProperties.getUrl());
+        properties.put(AvailableSettings.USER, dataSourceProperties.getUsername());
+        properties.put(AvailableSettings.PASS, dataSourceProperties.getPassword());
+
+//        spring.datasource.type=com.zaxxer.hikari.HikariDataSource
+//        spring.datasource.driverClassName=org.h2.Driver
+
+//        spring.datasource.username=poc
+//        spring.datasource.password=poc
+
+        // JPA Vendor Adapter
+        HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
+        jpaVendorAdapter.setDatabase(Database.H2);
+        jpaVendorAdapter.setGenerateDdl(true);
+
+        // Entity Manager Factory Bean
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setDataSource(dataSource);
-        factoryBean.setJpaProperties(jpaProperties);
+        //factoryBean.setDataSource(dataSource);
+        factoryBean.setJpaPropertyMap(properties);
+        factoryBean.setJpaVendorAdapter(jpaVendorAdapter);
         factoryBean.setPackagesToScan("com.archicode.playground.poc");
         factoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
         return factoryBean;
@@ -55,6 +86,11 @@ public class ApplicationConfig {
     @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);
+    }
+
+    @Bean
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+        return new PersistenceExceptionTranslationPostProcessor();
     }
 
 }

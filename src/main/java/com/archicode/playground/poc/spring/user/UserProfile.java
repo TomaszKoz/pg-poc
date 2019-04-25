@@ -30,7 +30,7 @@ public class UserProfile {
     @Column
     private String email;
     @Column
-    private String adress;
+    private String address;
     @Column
     private String city;
     @Column

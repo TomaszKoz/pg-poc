@@ -23,7 +23,7 @@ public class UserProfileService {
         profile.setFirstName("Mike");
         profile.setLastName("Andrew");
         profile.setEmail("mike.andrew@mail.com");
-        profile.setAdress("Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09");
+        profile.setAddress("Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09");
         profile.setCity("Toronto");
         profile.setCountry("Canada");
         profile.setAboutMe("Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.");
