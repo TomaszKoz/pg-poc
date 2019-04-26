@@ -35,11 +35,9 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Duration;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.net.URL;
-import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -235,15 +233,11 @@ public class HomeController implements Initializable {
         Image image = new Image("/images/faces/face-3.jpg");
         imageCircle.setFill(new ImagePattern(image));
 
-        // Spring
-        List<UserProfile> profiles = userProfileService.findAll();
-        AppLogger.info("profiles count: " + profiles.size());
-
+        // User profiles
+        AppLogger.info("User profiles count: " + userProfileService.count());
         UserProfile profile = userProfileService.createExampleUserProfile();
         AppLogger.info("saved user profile: " + profile);
-
-        profiles = userProfileService.findAll();
-        AppLogger.info("profiles count: " + profiles.size());
+        AppLogger.info("User profiles count: " + userProfileService.count());
     }
 
     private void setAnimation(XYChart<String, Number> chart) {

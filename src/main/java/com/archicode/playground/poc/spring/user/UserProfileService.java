@@ -39,4 +39,8 @@ public class UserProfileService {
         return repository.findAll();
     }
 
+    public long count() {
+        return repository.count();
+    }
+
 }

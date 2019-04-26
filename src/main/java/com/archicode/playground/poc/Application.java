@@ -12,7 +12,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import sun.reflect.CallerSensitive;
 
 import java.io.IOException;
 
@@ -64,7 +63,6 @@ public class Application {
     }
 
     /** Loads a FXML document */
-    @CallerSensitive
     public static <T> T loadFXML(String fxmlFilePath) throws IOException {
         if (fxmlLoader == null) {
             throw new IllegalStateException("Try to load FXML document before application initialization");
