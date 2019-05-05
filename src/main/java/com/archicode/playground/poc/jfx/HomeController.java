@@ -8,10 +8,13 @@ import com.archicode.playground.poc.spring.user.UserProfile;
 import com.archicode.playground.poc.spring.user.UserProfileService;
 import com.archicode.playground.poc.utils.ChartUtils;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.beans.binding.Binding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -37,6 +40,7 @@ import javafx.util.Duration;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 
+import javax.jws.soap.SOAPBinding;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -105,6 +109,29 @@ public class HomeController implements Initializable {
     private WebView webView;
     @FXML
     private Label titleLabel;
+
+    private UserProfile user;
+
+    @FXML
+    private JFXTextField userCompany;
+    @FXML
+    private JFXTextField userUsername;
+    @FXML
+    private JFXTextField userFirstName;
+    @FXML
+    private JFXTextField userLastName;
+    @FXML
+    private JFXTextField userEmail;
+    @FXML
+    private JFXTextField userAddress;
+    @FXML
+    private JFXTextField userCity;
+    @FXML
+    private JFXTextField userCountry;
+    @FXML
+    private JFXTextField userPostalCode;
+    @FXML
+    private JFXTextArea userAboutMe;
 
     private void onIconClick(ActionEvent event) {
         System.out.println("You clicked Icon!");
@@ -233,11 +260,17 @@ public class HomeController implements Initializable {
         Image image = new Image("/images/faces/face-3.jpg");
         imageCircle.setFill(new ImagePattern(image));
 
-        // User profiles
-        AppLogger.info("User profiles count: " + userProfileService.count());
-        UserProfile profile = userProfileService.createExampleUserProfile();
-        AppLogger.info("saved user profile: " + profile);
-        AppLogger.info("User profiles count: " + userProfileService.count());
+        user = userProfileService.findById(1L);
+        userCompany.textProperty().bindBidirectional(user.getCompanyProperty());
+        userUsername.textProperty().bindBidirectional(user.getUsernameProperty());
+        userFirstName.textProperty().bindBidirectional(user.getFirstNameProperty());
+        userLastName.textProperty().bindBidirectional(user.getLastNameProperty());
+        userEmail.textProperty().bindBidirectional(user.getEmailProperty());
+        userAddress.textProperty().bindBidirectional(user.getAddressProperty());
+        userCity.textProperty().bindBidirectional(user.getCityProperty());
+        userCountry.textProperty().bindBidirectional(user.getCountryProperty());
+        userPostalCode.textProperty().bindBidirectional(user.getPostalCodeProperty());
+        userAboutMe.textProperty().bindBidirectional(user.getAboutMeProperty());
     }
 
     private void setAnimation(XYChart<String, Number> chart) {
@@ -481,6 +514,14 @@ public class HomeController implements Initializable {
                 "WARNING", () -> Notifications.showWarning("User has selected warning action..."),
                 "ERROR", () -> Notifications.showError("User has selected error action...")
         );
+    }
+
+    @FXML
+    private void onUpdateProfile(MouseEvent event) {
+        if (user != null) {
+            userProfileService.save(user);
+            Notifications.showSuccess("User profile has been updated");
+        }
     }
 
 }

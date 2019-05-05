@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import de.jensd.fx.glyphs.materialdesignicons.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
+
 <AnchorPane fx:id="workingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="1366.0" stylesheets="file:/D:/prj/pg-poc/src/main/resources/css/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archicode.playground.poc.jfx.HomeController">
     <ImageView fx:id="background" fitHeight="670.0" fitWidth="260.0" layoutY="60.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0">
         <Image url="file:/D:/prj/pg-poc/src/main/resources/images/sidebar-3.jpg" />
@@ -431,7 +446,7 @@
                         </font>
                      </Label>
                   </children></Pane>
-               <AnchorPane fx:id="userProfile" layoutY="60.0" prefHeight="1350.0" prefWidth="1086.0" style="-fx-background-color: #F7F7F8;" visible="false" AnchorPane.rightAnchor="4.0">
+               <AnchorPane fx:id="userProfile" layoutY="60.0" prefHeight="1350.0" prefWidth="1086.0" style="-fx-background-color: #F7F7F8;" AnchorPane.rightAnchor="4.0">
                   <children>
                      <Pane layoutX="26.0" layoutY="25.0" prefHeight="772.0" prefWidth="692.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #e7e7e7; -fx-border-radius: 10;">
                         <children>
@@ -440,74 +455,104 @@
                                  <Font size="24.0" />
                               </font>
                            </Label>
-                           <JFXTextField disable="true" focusColor="#41b9e1" layoutX="23.0" layoutY="98.0" prefHeight="42.0" prefWidth="211.0" style="-fx-background-color: #F0F0F0; -fx-background-radius: 5; -fx-border-color: #AAAAAA; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Creative Code Inc." unFocusColor="WHITE" />
+                           <JFXTextField fx:id="userCompany" disable="true" focusColor="#41b9e1" layoutX="23.0" layoutY="98.0" prefHeight="42.0" prefWidth="211.0" style="-fx-background-color: #F0F0F0; -fx-background-radius: 5; -fx-border-color: #AAAAAA; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" unFocusColor="WHITE">
+                              <font>
+                                 <Font size="17.0" />
+                              </font></JFXTextField>
                            <Label layoutX="23.0" layoutY="70.0" text="COMPANY" textFill="#9a9a9a">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </Label>
-                           <JFXTextField focusColor="#41b9e1" layoutX="257.0" layoutY="98.0" prefHeight="42.0" prefWidth="193.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="michael23" unFocusColor="WHITE" />
+                           <JFXTextField fx:id="userUsername" focusColor="#41b9e1" layoutX="257.0" layoutY="98.0" prefHeight="42.0" prefWidth="193.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" unFocusColor="WHITE">
+                              <font>
+                                 <Font size="17.0" />
+                              </font></JFXTextField>
                            <Label layoutX="257.0" layoutY="70.0" text="USERNAME" textFill="#9a9a9a">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </Label>
-                           <JFXTextField accessibleText="aaaaa" focusColor="#41b9e1" layoutX="473.0" layoutY="98.0" prefHeight="42.0" prefWidth="197.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" unFocusColor="WHITE" />
+                           <JFXTextField fx:id="userEmail" accessibleText="aaaaa" focusColor="#41b9e1" layoutX="473.0" layoutY="98.0" prefHeight="42.0" prefWidth="197.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" unFocusColor="WHITE">
+                              <font>
+                                 <Font size="17.0" />
+                              </font></JFXTextField>
                            <Label layoutX="475.0" layoutY="70.0" text="EMAIL ADDRESS" textFill="#9a9a9a">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </Label>
-                           <JFXTextField focusColor="#41b9e1" layoutX="23.0" layoutY="193.0" prefHeight="42.0" prefWidth="293.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Mike" unFocusColor="WHITE" />
+                           <JFXTextField fx:id="userFirstName" focusColor="#41b9e1" layoutX="23.0" layoutY="193.0" prefHeight="42.0" prefWidth="293.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" unFocusColor="WHITE">
+                              <font>
+                                 <Font size="17.0" />
+                              </font></JFXTextField>
                            <Label layoutX="23.0" layoutY="165.0" text="FIRST NAME" textFill="#9a9a9a">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </Label>
-                           <JFXTextField accessibleText="aaaaa" focusColor="#41b9e1" layoutX="352.0" layoutY="193.0" prefHeight="42.0" prefWidth="318.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Andrew" unFocusColor="WHITE" />
+                           <JFXTextField fx:id="userLastName" accessibleText="aaaaa" focusColor="#41b9e1" layoutX="352.0" layoutY="193.0" prefHeight="42.0" prefWidth="318.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" unFocusColor="WHITE">
+                              <font>
+                                 <Font size="17.0" />
+                              </font></JFXTextField>
                            <Label layoutX="354.0" layoutY="165.0" text="LAST NAME" textFill="#9a9a9a">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </Label>
-                           <JFXTextField focusColor="#41b9e1" layoutX="23.0" layoutY="290.0" prefHeight="42.0" prefWidth="645.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" unFocusColor="WHITE" />
+                           <JFXTextField fx:id="userAddress" focusColor="#41b9e1" layoutX="23.0" layoutY="290.0" prefHeight="42.0" prefWidth="645.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" unFocusColor="WHITE">
+                              <font>
+                                 <Font size="17.0" />
+                              </font></JFXTextField>
                            <Label layoutX="23.0" layoutY="262.0" text="ADRESS" textFill="#9a9a9a">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </Label>
-                           <JFXTextField focusColor="#41b9e1" layoutX="23.0" layoutY="389.0" prefHeight="42.0" prefWidth="211.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Toronto" unFocusColor="WHITE" />
+                           <JFXTextField fx:id="userCity" focusColor="#41b9e1" layoutX="23.0" layoutY="389.0" prefHeight="42.0" prefWidth="211.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" unFocusColor="WHITE">
+                              <font>
+                                 <Font size="17.0" />
+                              </font></JFXTextField>
                            <Label layoutX="23.0" layoutY="361.0" text="CITY" textFill="#9a9a9a">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </Label>
-                           <JFXTextField focusColor="#41b9e1" layoutX="257.0" layoutY="389.0" prefHeight="42.0" prefWidth="193.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" text="Canada" unFocusColor="WHITE" />
+                           <JFXTextField fx:id="userCountry" focusColor="#41b9e1" layoutX="257.0" layoutY="389.0" prefHeight="42.0" prefWidth="193.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" unFocusColor="WHITE">
+                              <font>
+                                 <Font size="17.0" />
+                              </font></JFXTextField>
                            <Label layoutX="257.0" layoutY="361.0" text="COUNTRY" textFill="#9a9a9a">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </Label>
-                           <JFXTextField accessibleText="aaaaa" focusColor="#41b9e1" layoutX="473.0" layoutY="389.0" prefHeight="42.0" prefWidth="193.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" unFocusColor="WHITE" />
+                           <JFXTextField fx:id="userPostalCode" accessibleText="aaaaa" focusColor="#41b9e1" layoutX="473.0" layoutY="389.0" prefHeight="42.0" prefWidth="193.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;" unFocusColor="WHITE">
+                              <font>
+                                 <Font size="17.0" />
+                              </font></JFXTextField>
                            <Label layoutX="475.0" layoutY="361.0" text="POSTAL CODE" textFill="#9a9a9a">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </Label>
-                           <JFXTextArea depthTest="DISABLE" focusColor="#41b9e1" layoutX="23.0" layoutY="490.0" prefHeight="150.0" prefWidth="643.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5;" text="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo." unFocusColor="WHITE">
+                           <JFXTextArea fx:id="userAboutMe" depthTest="DISABLE" focusColor="#41b9e1" layoutX="23.0" layoutY="490.0" prefHeight="150.0" prefWidth="643.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5; -fx-border-color: #E3E3E3; -fx-border-radius: 5;" unFocusColor="WHITE">
                               <opaqueInsets>
                                  <Insets />
                               </opaqueInsets>
                               <padding>
                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                               </padding>
+                              <font>
+                                 <Font size="17.0" />
+                              </font>
                            </JFXTextArea>
                            <Label layoutX="23.0" layoutY="459.0" text="ABOUT ME" textFill="#9a9a9a">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </Label>
-                           <JFXButton buttonType="RAISED" layoutX="514.0" layoutY="680.0" prefHeight="49.0" prefWidth="152.0" style="-fx-background-color: #42D0ED; -fx-background-radius: 5;" text="Update Profie" textFill="WHITE">
+                           <JFXButton buttonType="RAISED" layoutX="514.0" layoutY="680.0" onMouseClicked="#onUpdateProfile" prefHeight="49.0" prefWidth="152.0" style="-fx-background-color: #42D0ED; -fx-background-radius: 5;" text="Update Profie" textFill="WHITE">
                               <font>
                                  <Font size="18.0" />
                               </font>
